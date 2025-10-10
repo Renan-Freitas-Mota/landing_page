@@ -21,9 +21,9 @@ const Index = () => {
       <NewsGrid />
       <Testimonials />
       <ProductGrid />
-      <About />
-      <FAQ />
+      {/* <About /> */}
       <FinalCTA />
+      <FAQ />
       <Footer />
       <FloatingCTA />
     </div>

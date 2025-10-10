@@ -1,118 +1,404 @@
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { CountdownTimer } from './CountdownTimer';
-import { TrendingUp } from 'lucide-react';
-import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
-import { motion } from 'framer-motion';
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { TrendingUp } from "lucide-react";
+import {
+    AreaChart,
+    Area,
+    XAxis,
+    YAxis,
+    ResponsiveContainer,
+    Tooltip,
+    CartesianGrid,
+    Legend,
+    Label,
+    LabelList,
+} from "recharts";
+import { motion } from "framer-motion";
 
 const chartData = [
-  { month: 'Jan', value: 100 },
-  { month: 'Fev', value: 120 },
-  { month: 'Mar', value: 180 },
-  { month: 'Abr', value: 220 },
-  { month: 'Mai', value: 310 },
-  { month: 'Jun', value: 380 },
-  { month: 'Jul', value: 420 },
-  { month: 'Ago', value: 500 },
+    // Mês 1
+    { month: "1.0", selic: 1, ibov: 0.4, sharks: 1 },
+    { month: "1.1", selic: 1.1, ibov: 0.5, sharks: 2 },
+    { month: "1.2", selic: 1.2, ibov: 0.3, sharks: 4 },
+    { month: "1.3", selic: 1.3, ibov: 0.7, sharks: 6 },
+    { month: "1.4", selic: 1.4, ibov: 0.6, sharks: 8 },
+    { month: "1.5", selic: 1.5, ibov: 0.8, sharks: 11 },
+    { month: "1.6", selic: 1.7, ibov: 0.9, sharks: 14 },
+    { month: "1.7", selic: 1.6, ibov: 1.0, sharks: 17 },
+    { month: "1.8", selic: 1.7, ibov: 0.6, sharks: 21 },
+    { month: "1.9", selic: 1.8, ibov: 0.4, sharks: 25 },
+
+    // Mês 2
+    { month: "2.0", selic: 1.9, ibov: -0.3, sharks: 30 },
+    { month: "2.1", selic: 2, ibov: -0.8, sharks: 26 },
+    { month: "2.2", selic: 2.4, ibov: -1.2, sharks: 32 },
+    { month: "2.3", selic: 2.35, ibov: -1.5, sharks: 47 },
+    { month: "2.4", selic: 2.3, ibov: -1.0, sharks: 41 },
+    { month: "2.5", selic: 2.25, ibov: -0.7, sharks: 49 },
+    { month: "2.6", selic: 2.2, ibov: -0.4, sharks: 70 },
+    { month: "2.7", selic: 2.1, ibov: -0.2, sharks: 55 },
+    { month: "2.8", selic: 2.1, ibov: 0.0, sharks: 78 },
+    { month: "2.9", selic: 2.5, ibov: 0.3, sharks: 100 },
+
+    // Mês 3
+    { month: "3.0", selic: 3.0, ibov: 0.5, sharks: 115 },
+    { month: "3.1", selic: 3.9, ibov: 1.0, sharks: 103 },
+    { month: "3.2", selic: 3.8, ibov: 1.3, sharks: 118 },
+    { month: "3.3", selic: 3.7, ibov: 1.1, sharks: 125 },
+    { month: "3.4", selic: 3.6, ibov: 0.9, sharks: 135 },
+    { month: "3.5", selic: 3.5, ibov: 1.2, sharks: 118 },
+    { month: "3.6", selic: 3.4, ibov: 1.5, sharks: 137 },
+    { month: "3.7", selic: 3.3, ibov: 1.8, sharks: 142 },
+    { month: "3.8", selic: 3.2, ibov: 2.0, sharks: 145 },
+    { month: "3.9", selic: 3.1, ibov: 2.3, sharks: 140 },
+
+    // Mês 4
+    { month: "4.0", selic: 4.0, ibov: 2.6, sharks: 145 },
+    { month: "4.1", selic: 4.9, ibov: 3.0, sharks: 148 },
+    { month: "4.2", selic: 4.8, ibov: 3.4, sharks: 150 },
+    { month: "4.3", selic: 4.7, ibov: 3.7, sharks: 155 },
+    { month: "4.4", selic: 4.6, ibov: 3.5, sharks: 135 },
+    { month: "4.5", selic: 4.5, ibov: 3.1, sharks: 130 },
+    { month: "4.6", selic: 4.4, ibov: 2.9, sharks: 125 },
+    { month: "4.7", selic: 4.3, ibov: 3.2, sharks: 115 },
+    { month: "4.8", selic: 4.2, ibov: 3.5, sharks: 120 },
+    { month: "4.9", selic: 4.1, ibov: 3.8, sharks: 125 },
+
+    // Mês 5
+    { month: "5.0", selic: 5.0, ibov: 4.0, sharks: 110 },
+    { month: "5.1", selic: 5.9, ibov: 4.2, sharks: 105 },
+    { month: "5.2", selic: 5.8, ibov: 4.0, sharks: 100 },
+    { month: "5.3", selic: 5.7, ibov: 3.7, sharks: 90 },
+    { month: "5.4", selic: 5.6, ibov: 3.5, sharks: 95 },
+    { month: "5.5", selic: 5.5, ibov: 3.8, sharks: 100 },
+    { month: "5.6", selic: 5.4, ibov: 4.1, sharks: 105 },
+    { month: "5.7", selic: 5.3, ibov: 4.3, sharks: 109 },
+    { month: "5.8", selic: 5.2, ibov: 4.5, sharks: 115 },
+    { month: "5.9", selic: 5.1, ibov: 4.7, sharks: 110 },
+
+    // Mês 6
+    { month: "6.0", selic: 6.0, ibov: 4.8, sharks: 113 },
+    { month: "6.1", selic: 6.9, ibov: 4.6, sharks: 115 },
+    { month: "6.2", selic: 6.8, ibov: 4.3, sharks: 110 },
+    { month: "6.3", selic: 6.7, ibov: 4.5, sharks: 115 },
+    { month: "6.4", selic: 6.6, ibov: 4.7, sharks: 115 },
+    { month: "6.5", selic: 6.5, ibov: 5.0, sharks: 130 },
+    { month: "6.6", selic: 6.4, ibov: 5.3, sharks: 125 },
+    { month: "6.7", selic: 6.3, ibov: 5.6, sharks: 135 },
+    { month: "6.8", selic: 6.2, ibov: 5.8, sharks: 145 },
+    { month: "6.9", selic: 6.1, ibov: 6.0, sharks: 168 },
+
+    // Mês 7
+    { month: "7.0", selic: 7.0, ibov: 6.2, sharks: 175 },
+    { month: "7.1", selic: 7.9, ibov: 6.4, sharks: 150 },
+    { month: "7.2", selic: 7.8, ibov: 6.6, sharks: 155 },
+    { month: "7.3", selic: 7.7, ibov: 6.8, sharks: 179 },
+    { month: "7.4", selic: 7.6, ibov: 7.0, sharks: 185 },
+    { month: "7.5", selic: 7.5, ibov: 7.2, sharks: 200 },
+    { month: "7.6", selic: 7.4, ibov: 7.4, sharks: 195 },
+    { month: "7.7", selic: 7.3, ibov: 7.6, sharks: 188 },
+    { month: "7.8", selic: 7.2, ibov: 7.8, sharks: 200 },
+    { month: "7.9", selic: 7.1, ibov: 8.0, sharks: 210 },
+
+    // Mês 8
+    { month: "8.0", selic: 8.0, ibov: 8.2, sharks: 220 },
+    { month: "8.1", selic: 8.9, ibov: 8.4, sharks: 230 },
+    { month: "8.2", selic: 8.8, ibov: 8.6, sharks: 223 },
+    { month: "8.3", selic: 8.7, ibov: 8.8, sharks: 218 },
+    { month: "8.4", selic: 8.6, ibov: 8.0, sharks: 225 },
+    { month: "8.5", selic: 8.5, ibov: 8.2, sharks: 236 },
+    { month: "8.6", selic: 8.4, ibov: 8.4, sharks: 242 },
+    { month: "8.7", selic: 8.3, ibov: 8.6, sharks: 238 },
+    { month: "8.8", selic: 8.2, ibov: 8.8, sharks: 235 },
+    { month: "8.9", selic: 8.1, ibov: 8.0, sharks: 245 },
+
+    // Mês 9
+    { month: "9.0", selic: 9.0, ibov: 7.2, sharks: 268 },
+    { month: "9.1", selic: 9.9, ibov: 7.4, sharks: 270 },
+    { month: "9.2", selic: 9.8, ibov: 7.6, sharks: 265 },
+    { month: "9.3", selic: 9.7, ibov: 7.8, sharks: 289 },
+    { month: "9.4", selic: 9.6, ibov: 7.0, sharks: 298 },
+    { month: "9.5", selic: 9.5, ibov: 7.2, sharks: 291 },
+    { month: "9.6", selic: 9.4, ibov: 7.4, sharks: 285 },
+    { month: "9.7", selic: 9.3, ibov: 7.6, sharks: 298 },
+    { month: "9.8", selic: 9.2, ibov: 7.8, sharks: 315 },
+    { month: "9.9", selic: 9.1, ibov: 7.0, sharks: 318 },
+
+    // Mês 10
+    { month: "10.0", selic: 9.0, ibov: 7.2, sharks: 338 },
+    { month: "10.1", selic: 9.9, ibov: 7.4, sharks: 330 },
+    { month: "10.2", selic: 9.8, ibov: 7.6, sharks: 300 },
+    { month: "10.3", selic: 9.7, ibov: 7.8, sharks: 330 },
+    { month: "10.4", selic: 9.6, ibov: 7.0, sharks: 340 },
+    { month: "10.5", selic: 10.5, ibov: 7.2, sharks: 345 },
+    { month: "10.6", selic: 10.4, ibov: 7.4, sharks: 338 },
+    { month: "10.7", selic: 10.3, ibov: 7.6, sharks: 340 },
+    { month: "10.8", selic: 10.2, ibov: 7.8, sharks: 338 },
+    { month: "10.9", selic: 10.1, ibov: 7.0, sharks: 342 },
+
+    // Mês 11
+    { month: "11.0", selic: 11.0, ibov: 7.2, sharks: 345 },
+    { month: "11.1", selic: 11.9, ibov: 7.4, sharks: 343 },
+    { month: "11.2", selic: 11.8, ibov: 7.6, sharks: 260 },
+    { month: "11.3", selic: 12.7, ibov: 7.8, sharks: 345 },
+    { month: "11.4", selic: 13.6, ibov: 7.0, sharks: 390 },
+    { month: "11.5", selic: 14.5, ibov: 7.2, sharks: 410 },
+    { month: "11.6", selic: 15, ibov: 7.4, sharks: 400 },
+    { month: "11.7", selic: 15, ibov: 7.6, sharks: 430 },
+    { month: "11.8", selic: 15, ibov: 7.8, sharks: 435 },
+    { month: "11.9", selic: 15, ibov: 7.0, sharks: 435 },
+
+    // Mês 124
+    { month: "12.0", selic: 15.0, ibov: 7, sharks: 437 },
 ];
 
 export function Hero() {
-  const scrollToCTA = () => {
-    const ctaSection = document.getElementById('final-cta');
-    ctaSection?.scrollIntoView({ behavior: 'smooth' });
-  };
+    const scrollToCTA = () => {
+        const ctaSection = document.getElementById("final-cta");
+        ctaSection?.scrollIntoView({ behavior: "smooth" });
+    };
 
-  return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-5xl mx-auto text-center"
-        >
-          <Badge className="mb-6 px-6 py-2 bg-secondary/20 border-secondary text-secondary-foreground text-sm font-semibold">
-            <TrendingUp className="w-4 h-4 mr-2 inline" />
-            +400% de valorização
-          </Badge>
-
-          <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
-            <span className="block">COPIE E COLE</span>
-            <span className="block text-gradient-gold">as 10 Criptomoedas</span>
-            <span className="block">dos Grandes Fundos Globais</span>
-          </h1>
-
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Acesso vitalício por apenas <span className="text-accent font-bold">R$29,90</span> às mesmas criptos que valorizaram <span className="text-secondary font-bold">+400%</span> nos últimos 12 meses
-          </p>
-
-          {/* Chart */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="mb-12 max-w-3xl mx-auto"
-          >
-            <div className="glass rounded-2xl p-8">
-              <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={chartData}>
-                  <XAxis 
-                    dataKey="month" 
-                    stroke="hsl(var(--muted-foreground))"
-                    style={{ fontSize: '14px' }}
-                  />
-                  <YAxis 
-                    stroke="hsl(var(--muted-foreground))"
-                    style={{ fontSize: '14px' }}
-                  />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'hsl(var(--card))',
-                      border: '1px solid hsl(var(--border))',
-                      borderRadius: '8px'
-                    }}
-                  />
-                  <Line 
-                    type="monotone" 
-                    dataKey="value" 
-                    stroke="hsl(var(--secondary))" 
-                    strokeWidth={3}
-                    dot={{ fill: 'hsl(var(--secondary))', strokeWidth: 2 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
+    return (
+        <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+            {/* Background decorative elements */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
             </div>
-          </motion.div>
 
-          {/* CTA and Timer */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="flex flex-col items-center gap-6"
-          >
-            <CountdownTimer />
-            
-            <Button 
-              onClick={scrollToCTA}
-              size="lg"
-              className="gradient-gold text-accent-foreground font-bold text-lg px-12 py-7 shadow-gold hover:scale-105 transition-transform"
-            >
-              QUERO ACESSO AGORA
-            </Button>
+            <div className="w-[95%] mx-auto relative z-10">
+                {/* Badge centralizado no topo */}
+                <div className="flex justify-center mb-8 mt-8">
+                    <Badge className="px-6 py-2 bg-secondary/20 border-secondary text-secondary-foreground text-sm font-semibold">
+                        + de 400% de valorização <TrendingUp className="ms-2 w-4 h-4 mr-2 inline" />
+                    </Badge>
+                </div>
 
-            <p className="text-sm text-muted-foreground">
-              ✓ Acesso Imediato  •  ✓ Garantia de 7 Dias  •  ✓ Suporte Exclusivo
-            </p>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
-  );
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    {/* Left Column - Headline and CTA */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-end">
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+                            <span className="block">COPIE E COLE</span>
+                            <span className="block text-gradient-gold">as 10 Criptomoedas</span>
+                            <span className="block">dos Grandes Fundos Globais</span>
+                        </h1>
+
+                        <p className="text-lg md:text-xl text-muted-foreground mb-12">
+                            Acesso vitalício por apenas <span className="text-accent font-bold">R$29,90</span> às
+                            mesmas criptos que valorizaram <span className="text-secondary font-bold">+400%</span>{" "}
+                            nos últimos 12 meses
+                        </p>
+                        {/* CTA */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                            className="flex flex-col items-end gap-6">
+                            <Button
+                                onClick={scrollToCTA}
+                                size="lg"
+                                className="gradient-gold text-accent-foreground font-bold text-lg px-12 py-7 shadow-gold hover:scale-105 transition-transform">
+                                QUERO ACESSO AGORA
+                            </Button>
+
+                            <p className="text-sm text-muted-foreground">
+                                ✓ Acesso Imediato • ✓ Garantia de 7 Dias • ✓ Suporte Exclusivo
+                            </p>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Right Column - Chart */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3, duration: 0.8 }}
+                        className="h-[65vh]">
+                        <div className="glass rounded-2xl p-1 lg:p-4 h-full flex flex-col">
+                            <h3 className="text-base lg:text-lg font-semibold mb-2">
+                                Comparativo de Rentabilidade - Últimos 12 Meses
+                            </h3>
+
+                            {/* Legendas */}
+                            <div className="flex flex-wrap gap-3 lg:gap-4 mb-4 justify-center lg:justify-start">
+                                <div className="flex items-center gap-2">
+                                    <div
+                                        className="w-3 h-3 rounded-sm"
+                                        style={{ backgroundColor: "#f59e0b" }}></div>
+                                    <span className="text-xs lg:text-sm font-medium">Carteira dos Tubarões</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div
+                                        className="w-3 h-3 rounded-sm"
+                                        style={{ backgroundColor: "#a78bfa" }}></div>
+                                    <span className="text-xs lg:text-sm font-medium">Tesouro Selic</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div
+                                        className="w-3 h-3 rounded-sm"
+                                        style={{ backgroundColor: "#ef4444" }}></div>
+                                    <span className="text-xs lg:text-sm font-medium">Ibovespa</span>
+                                </div>
+                            </div>
+
+                            <ResponsiveContainer width="100%" height="100%">
+                                <AreaChart data={chartData} margin={{ top: 10, right: 48, left: 10, bottom: 30 }}>
+                                    <defs>
+                                        <linearGradient id="colorSelic" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#a78bfa" stopOpacity={0.8} />
+                                            <stop offset="95%" stopColor="#a78bfa" stopOpacity={0.1} />
+                                        </linearGradient>
+                                        <linearGradient id="colorIbov" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8} />
+                                            <stop offset="95%" stopColor="#ef4444" stopOpacity={0.1} />
+                                        </linearGradient>
+                                        <linearGradient id="colorSharks" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.9} />
+                                            <stop offset="95%" stopColor="#f59e0b" stopOpacity={0.2} />
+                                        </linearGradient>
+                                    </defs>
+                                    <CartesianGrid
+                                        strokeDasharray="3 3"
+                                        stroke="hsl(var(--muted-foreground)/0.15)"
+                                        vertical={false}
+                                    />
+                                    <XAxis
+                                        dataKey="month"
+                                        stroke="hsl(var(--muted-foreground)/0.5)"
+                                        tick={{ fill: "hsl(var(--muted-foreground))" }}
+                                        axisLine={false}
+                                        tickLine={false}
+                                        ticks={[
+                                            "1.0",
+                                            "2.0",
+                                            "3.0",
+                                            "4.0",
+                                            "5.0",
+                                            "6.0",
+                                            "7.0",
+                                            "8.0",
+                                            "9.0",
+                                            "10.0",
+                                            "11.0",
+                                            "12.0",
+                                        ]}
+                                        tickFormatter={(value) => value.split(".")[0]}
+                                        style={{ fontSize: "12px" }}>
+                                        <Label value="Meses" offset={-10} position="insideBottom" />
+                                    </XAxis>
+                                    <YAxis
+                                        domain={[0, 450]}
+                                        ticks={[0, 150, 300, 450]}
+                                        tickFormatter={(v) => `${v}`}
+                                        stroke="hsl(var(--muted-foreground)/0.5)"
+                                        tick={{ fill: "hsl(var(--muted-foreground))" }}
+                                        axisLine={false}
+                                        tickLine={false}
+                                        style={{ fontSize: "11px" }}>
+                                        <Label value="%" angle={-90} position="insideLeft" offset={10} />
+                                    </YAxis>
+                                    <Tooltip
+                                        formatter={(value) => `${value as number}%`}
+                                        labelFormatter={(label) => `Mês ${label.split(".")[0]}`}
+                                        contentStyle={{
+                                            backgroundColor: "hsl(var(--background))",
+                                            border: "1px solid hsl(var(--border))",
+                                            borderRadius: "8px",
+                                        }}
+                                        allowEscapeViewBox={{ x: false, y: false }}
+                                        wrapperStyle={{ outline: "none" }}
+                                    />
+                                    {/* Tesouro Selic - 15% (roxo/lilás) */}
+                                    <Area
+                                        name="Tesouro Selic - 15%"
+                                        type="monotone"
+                                        dataKey="selic"
+                                        stroke="#a78bfa"
+                                        strokeWidth={1}
+                                        fill="url(#colorSelic)"
+                                        fillOpacity={1}
+                                        dot={false}>
+                                        <LabelList
+                                            dataKey="selic"
+                                            content={({ index, x, y }) =>
+                                                index === chartData.length - 1 ? (
+                                                    <text
+                                                        x={(x as number) + 8}
+                                                        y={(y as number) + 0}
+                                                        fill="#a78bfa"
+                                                        fontSize={12}
+                                                        fontWeight={600}>
+                                                        15%
+                                                    </text>
+                                                ) : null
+                                            }
+                                        />
+                                    </Area>
+
+                                    {/* Ibovespa - 8% (vermelho) */}
+                                    <Area
+                                        name="Ibovespa - 8%"
+                                        type="monotone"
+                                        dataKey="ibov"
+                                        stroke="#ef4444"
+                                        strokeWidth={1}
+                                        fill="url(#colorIbov)"
+                                        fillOpacity={1}
+                                        dot={false}>
+                                        <LabelList
+                                            dataKey="ibov"
+                                            content={({ index, x, y }) =>
+                                                index === chartData.length - 1 ? (
+                                                    <text
+                                                        x={(x as number) + 8}
+                                                        y={(y as number) + 8}
+                                                        fill="#ef4444"
+                                                        fontSize={12}
+                                                        fontWeight={600}>
+                                                        8%
+                                                    </text>
+                                                ) : null
+                                            }
+                                        />
+                                    </Area>
+
+                                    {/* Carteira dos Tubarões - 437% (laranja/dourado) */}
+                                    <Area
+                                        name="Carteira dos Tubarões - 437%"
+                                        type="monotone"
+                                        dataKey="sharks"
+                                        stroke="#f59e0b"
+                                        strokeWidth={1.5}
+                                        fill="url(#colorSharks)"
+                                        fillOpacity={1}
+                                        dot={false}>
+                                        <LabelList
+                                            dataKey="sharks"
+                                            content={({ index, x, y }) =>
+                                                index === chartData.length - 1 ? (
+                                                    <text
+                                                        x={(x as number) + 8}
+                                                        y={(y as number) - 6}
+                                                        fill="#f59e0b"
+                                                        fontSize={14}
+                                                        fontWeight={800}>
+                                                        437%
+                                                    </text>
+                                                ) : null
+                                            }
+                                        />
+                                    </Area>
+                                </AreaChart>
+                            </ResponsiveContainer>
+                            <div className="text-xs text-muted-foreground mt-3 text-right flex-shrink-0">
+                                Fonte: Infomoney e Tesouro Selic
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+        </section>
+    );
 }

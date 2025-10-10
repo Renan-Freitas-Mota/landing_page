@@ -2,102 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
-  :root {
-    --background: 215 28% 7%;
-    --foreground: 0 0% 98%;
+    :root {
+        --background: 215 28% 7%;
+        --foreground: 0 0% 98%;
 
-    --card: 215 25% 10%;
-    --card-foreground: 0 0% 98%;
+        --card: 215 25% 10%;
+        --card-foreground: 0 0% 98%;
 
-    --popover: 215 25% 10%;
-    --popover-foreground: 0 0% 98%;
+        --popover: 215 25% 10%;
+        --popover-foreground: 0 0% 98%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 98%;
+        --primary: 217 91% 60%;
+        --primary-foreground: 0 0% 98%;
 
-    --secondary: 142 76% 36%;
-    --secondary-foreground: 0 0% 98%;
+        --secondary: 142 76% 36%;
+        --secondary-foreground: 0 0% 98%;
 
-    --muted: 215 20% 20%;
-    --muted-foreground: 220 9% 65%;
+        --muted: 215 20% 20%;
+        --muted-foreground: 220 9% 65%;
 
-    --accent: 38 92% 50%;
-    --accent-foreground: 215 28% 7%;
+        --accent: 38 92% 50%;
+        --accent-foreground: 215 28% 7%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
 
-    --border: 215 20% 20%;
-    --input: 215 20% 20%;
-    --ring: 217 91% 60%;
+        --border: 215 20% 20%;
+        --input: 215 20% 20%;
+        --ring: 217 91% 60%;
 
-    --radius: 0.75rem;
+        --radius: 0.75rem;
 
-    --gradient-dark: linear-gradient(135deg, hsl(215, 28%, 7%) 0%, hsl(217, 40%, 12%) 100%);
-    --gradient-primary: linear-gradient(135deg, hsl(217, 91%, 60%) 0%, hsl(217, 91%, 45%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(38, 92%, 50%) 0%, hsl(45, 90%, 60%) 100%);
-    --gradient-success: linear-gradient(135deg, hsl(142, 76%, 36%) 0%, hsl(142, 76%, 25%) 100%);
-    
-    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.3);
-    --shadow-gold: 0 0 30px hsl(38 92% 50% / 0.4);
-  }
+        --gradient-dark: linear-gradient(135deg, hsl(215, 28%, 7%) 0%, hsl(217, 40%, 12%) 100%);
+        --gradient-primary: linear-gradient(135deg, hsl(217, 91%, 60%) 0%, hsl(217, 91%, 45%) 100%);
+        --gradient-gold: linear-gradient(135deg, hsl(38, 92%, 50%) 0%, hsl(45, 90%, 60%) 100%);
+        --gradient-success: linear-gradient(135deg, hsl(142, 76%, 36%) 0%, hsl(142, 76%, 25%) 100%);
+
+        --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.3);
+        --shadow-gold: 0 0 30px hsl(38 92% 50% / 0.4);
+    }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+    * {
+        @apply border-border;
+    }
 
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-    background: linear-gradient(135deg, hsl(215, 28%, 7%) 0%, hsl(217, 40%, 12%) 100%);
-  }
+    body {
+        @apply bg-background text-foreground font-sans antialiased;
+        background: linear-gradient(135deg, hsl(215, 28%, 7%) 0%, hsl(217, 40%, 12%) 100%);
+    }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
-  }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-bold;
+    }
 }
 
 @layer utilities {
-  .gradient-dark {
-    background: var(--gradient-dark);
-  }
-  
-  .gradient-primary {
-    background: var(--gradient-primary);
-  }
-  
-  .gradient-gold {
-    background: var(--gradient-gold);
-  }
-  
-  .gradient-success {
-    background: var(--gradient-success);
-  }
+    .gradient-dark {
+        background: var(--gradient-dark);
+    }
 
-  .glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
+    .gradient-primary {
+        background: var(--gradient-primary);
+    }
 
-  .text-gradient-gold {
-    background: var(--gradient-gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+    .gradient-gold {
+        background: var(--gradient-gold);
+    }
 
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
-  }
+    .gradient-success {
+        background: var(--gradient-success);
+    }
 
-  .shadow-gold {
-    box-shadow: var(--shadow-gold);
-  }
+    .glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .text-gradient-gold {
+        background: var(--gradient-gold);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .shadow-glow {
+        box-shadow: var(--shadow-glow);
+    }
+
+    .shadow-gold {
+        box-shadow: var(--shadow-gold);
+    }
 }
