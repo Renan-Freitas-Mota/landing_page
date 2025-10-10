@@ -31,7 +31,7 @@ export function Navbar() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <CountdownTimer />
+                    {/* <CountdownTimer /> */}
                     <Button
                         onClick={scrollToCTA}
                         size="lg"

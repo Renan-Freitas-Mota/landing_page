@@ -17,7 +17,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       <VideoSection />
-      <CryptoCarousel />
+      {/* <CryptoCarousel /> */}
       <NewsGrid />
       <Testimonials />
       <ProductGrid />

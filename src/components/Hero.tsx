@@ -159,18 +159,18 @@ export function Hero() {
     };
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+        <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-x-hidden">
             {/* Background decorative elements */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-20 right-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
                 <div className="absolute bottom-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
             </div>
 
-            <div className="w-[95%] mx-auto relative z-10">
+            <div className="w-full max-w-[95%] mx-auto relative z-10">
                 {/* Badge centralizado no topo */}
-                <div className="flex justify-center mb-8 mt-8">
-                    <Badge className="px-6 py-2 bg-secondary/20 border-secondary text-secondary-foreground text-sm font-semibold">
-                        + de 400% de valorização <TrendingUp className="ms-2 w-4 h-4 mr-2 inline" />
+                <div className="flex justify-center mb-8 mt-8 px-4">
+                    <Badge className="px-4 sm:px-6 py-2 bg-secondary/20 border-secondary text-secondary-foreground text-xs sm:text-sm font-semibold whitespace-nowrap max-w-full">
+                        + de 400% de valorização <TrendingUp className="ms-2 w-4 h-4 mr-2 inline flex-shrink-0" />
                     </Badge>
                 </div>
 
@@ -180,29 +180,29 @@ export function Hero() {
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-end">
+                        className="text-center lg:text-end px-2 sm:px-4 lg:px-0 overflow-hidden">
                         {/* Badge de Exclusividade */}
                         <motion.div
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2, duration: 0.6 }}
-                            className="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 rounded-full px-4 py-2 mb-6">
-                            <span className="relative flex h-2 w-2">
+                            className="inline-flex items-center justify-center gap-2 bg-accent/10 border border-accent/30 rounded-full px-3 sm:px-4 py-2 mb-6 max-w-full">
+                            <span className="relative flex h-2 w-2 flex-shrink-0">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                             </span>
-                            <span className="text-accent text-sm font-semibold">
+                            <span className="text-accent text-xs sm:text-sm font-semibold whitespace-nowrap">
                                 ACESSO LIMITADO • ÚLTIMAS VAGAS
                             </span>
                         </motion.div>
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6">
+                        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-6 break-words">
                             <span className="block">
                                 A <span className="text-gradient-gold">CARTEIRA SECRETA</span>
                             </span>
                             <span className="block">DOS GRANDES</span>
                             <span className="block">TUBARÕES</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-foreground/90 mb-4 font-semibold">
+                        <p className="text-lg sm:text-xl md:text-2xl text-foreground/90 mb-4 font-semibold break-words">
                             As 10 criptomoedas que{" "}
                             <span className="text-secondary font-black">fundos bilionários</span>{" "}
                             <span className="block mt-2">estão acumulando em silêncio</span>
@@ -218,16 +218,18 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5, duration: 0.8 }}
-                            className="flex flex-col items-end gap-6">
+                            className="flex flex-col items-center lg:items-end gap-6">
                             <Button
                                 onClick={scrollToCTA}
                                 size="lg"
-                                className="gradient-gold text-accent-foreground font-bold text-lg px-12 py-7 shadow-gold hover:scale-105 transition-transform relative overflow-hidden group">
-                                <span className="relative z-10">GARANTIR MINHA VAGA AGORA</span>
+                                className="gradient-gold text-accent-foreground font-bold text-base sm:text-lg px-6 sm:px-12 py-6 sm:py-7 shadow-gold hover:scale-105 transition-transform relative overflow-hidden group w-full sm:w-auto max-w-full">
+                                <span className="relative z-10 whitespace-normal sm:whitespace-nowrap text-center">
+                                    GARANTIR MINHA VAGA AGORA
+                                </span>
                                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></span>
                             </Button>
 
-                            <p className="text-sm text-muted-foreground">
+                            <p className="text-sm text-muted-foreground text-center lg:text-right">
                                 <span className="text-green-500">✓</span> Acesso Imediato ao Grupo VIP{"  "}
                                 <span className="text-green-500">✓</span> Atualizações Mensais{" "}
                                 <span className="text-green-500">✓</span> Garantia de 7 Dias
@@ -240,9 +242,9 @@ export function Hero() {
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3, duration: 0.8 }}
-                        className="h-[65vh]">
-                        <div className="glass rounded-2xl p-1 lg:p-4 h-full flex flex-col">
-                            <h3 className="text-base lg:text-lg font-semibold mb-2">
+                        className="h-[65vh] px-2 sm:px-4 lg:px-0 overflow-hidden">
+                        <div className="glass rounded-2xl p-2 sm:p-3 lg:p-4 h-full flex flex-col overflow-hidden">
+                            <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 break-words">
                                 Comparativo de Rentabilidade - Últimos 12 Meses
                             </h3>
 
@@ -269,7 +271,7 @@ export function Hero() {
                             </div>
 
                             <ResponsiveContainer width="100%" height="100%">
-                                <AreaChart data={chartData} margin={{ top: 10, right: 48, left: 10, bottom: 30 }}>
+                                <AreaChart data={chartData} margin={{ top: 10, right: 50, left: -10, bottom: 30 }}>
                                     <defs>
                                         <linearGradient id="colorSelic" x1="0" y1="0" x2="0" y2="1">
                                             <stop offset="5%" stopColor="#a78bfa" stopOpacity={0.8} />
@@ -316,14 +318,13 @@ export function Hero() {
                                     <YAxis
                                         domain={[0, 450]}
                                         ticks={[0, 150, 300, 450]}
-                                        tickFormatter={(v) => `${v}`}
+                                        tickFormatter={(v) => `${v}%`}
                                         stroke="hsl(var(--muted-foreground)/0.5)"
                                         tick={{ fill: "hsl(var(--muted-foreground))" }}
                                         axisLine={false}
                                         tickLine={false}
-                                        style={{ fontSize: "11px" }}>
-                                        <Label value="%" angle={-90} position="insideLeft" offset={10} />
-                                    </YAxis>
+                                        style={{ fontSize: "11px" }}
+                                    />
                                     <Tooltip
                                         formatter={(value) => `${value as number}%`}
                                         labelFormatter={(label) => `Mês ${label.split(".")[0]}`}
@@ -350,10 +351,10 @@ export function Hero() {
                                             content={({ index, x, y }) =>
                                                 index === chartData.length - 1 ? (
                                                     <text
-                                                        x={(x as number) + 8}
+                                                        x={(x as number) + 4}
                                                         y={(y as number) + 0}
                                                         fill="#a78bfa"
-                                                        fontSize={12}
+                                                        fontSize={11}
                                                         fontWeight={600}>
                                                         15%
                                                     </text>
@@ -377,10 +378,10 @@ export function Hero() {
                                             content={({ index, x, y }) =>
                                                 index === chartData.length - 1 ? (
                                                     <text
-                                                        x={(x as number) + 8}
+                                                        x={(x as number) + 4}
                                                         y={(y as number) + 8}
                                                         fill="#ef4444"
-                                                        fontSize={12}
+                                                        fontSize={11}
                                                         fontWeight={600}>
                                                         8%
                                                     </text>
@@ -404,10 +405,10 @@ export function Hero() {
                                             content={({ index, x, y }) =>
                                                 index === chartData.length - 1 ? (
                                                     <text
-                                                        x={(x as number) + 8}
+                                                        x={(x as number) + 4}
                                                         y={(y as number) - 6}
                                                         fill="#f59e0b"
-                                                        fontSize={14}
+                                                        fontSize={12}
                                                         fontWeight={800}>
                                                         437%
                                                     </text>

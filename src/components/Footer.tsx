@@ -9,7 +9,7 @@ export function Footer() {
                     {/* Brand */}
                     <div>
                         <div className="flex items-center gap-2 mb-4">
-                            <img src="/logo.png" alt="Carteira dos Tubarões" className="h-8" />
+                            <img src="/logo.png" alt="Carteira dos Tubarões" className="h-25" />
                         </div>
                         <p className="text-sm text-muted-foreground leading-relaxed">
                             Acesso às mesmas criptomoedas dos grandes fundos globais. Invista com inteligência e
