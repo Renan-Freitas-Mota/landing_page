@@ -162,7 +162,8 @@ export function Hero() {
         <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
             {/* Background decorative elements */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
+                <div className="absolute top-20 right-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
+                <div className="absolute bottom-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
             </div>
 
             <div className="w-[95%] mx-auto relative z-10">
@@ -174,7 +175,6 @@ export function Hero() {
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    {/* Left Column - Headline and CTA */}
                     {/* Left Column - Headline and CTA */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -196,7 +196,9 @@ export function Hero() {
                             </span>
                         </motion.div>
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6">
-                            <span className="block">A <span className="text-gradient-gold">CARTEIRA SECRETA</span></span>
+                            <span className="block">
+                                A <span className="text-gradient-gold">CARTEIRA SECRETA</span>
+                            </span>
                             <span className="block">DOS GRANDES</span>
                             <span className="block">TUBARÕES</span>
                         </h1>
@@ -209,8 +211,7 @@ export function Hero() {
                             Criptomoedas com movimentação real de baleias
                         </p>
                         <p className="text-base md:text-lg text-muted-foreground mb-10 italic">
-                            Monitoradas mensalmente por
-                            nossa equipe de análise.
+                            Monitoradas mensalmente por nossa equipe de análise.
                         </p>
                         {/* CTA */}
                         <motion.div
