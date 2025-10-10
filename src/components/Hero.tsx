@@ -175,21 +175,42 @@ export function Hero() {
 
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     {/* Left Column - Headline and CTA */}
+                    {/* Left Column - Headline and CTA */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         className="text-end">
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
-                            <span className="block">COPIE E COLE</span>
-                            <span className="block text-gradient-gold">as 10 Criptomoedas</span>
-                            <span className="block">dos Grandes Fundos Globais</span>
+                        {/* Badge de Exclusividade */}
+                        <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2, duration: 0.6 }}
+                            className="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 rounded-full px-4 py-2 mb-6">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                            </span>
+                            <span className="text-accent text-sm font-semibold">
+                                ACESSO LIMITADO • ÚLTIMAS VAGAS
+                            </span>
+                        </motion.div>
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6">
+                            <span className="block">A <span className="text-gradient-gold">CARTEIRA SECRETA</span></span>
+                            <span className="block">DOS GRANDES</span>
+                            <span className="block">TUBARÕES</span>
                         </h1>
-
-                        <p className="text-lg md:text-xl text-muted-foreground mb-12">
-                            Acesso vitalício por apenas <span className="text-accent font-bold">R$29,90</span> às
-                            mesmas criptos que valorizaram <span className="text-secondary font-bold">+400%</span>{" "}
-                            nos últimos 12 meses
+                        <p className="text-xl md:text-2xl text-foreground/90 mb-4 font-semibold">
+                            As 10 criptomoedas que{" "}
+                            <span className="text-secondary font-black">fundos bilionários</span>{" "}
+                            <span className="block mt-2">estão acumulando em silêncio</span>
+                        </p>
+                        <p className="text-base md:text-lg text-muted-foreground italic">
+                            Criptomoedas com movimentação real de baleias
+                        </p>
+                        <p className="text-base md:text-lg text-muted-foreground mb-10 italic">
+                            Monitoradas mensalmente por
+                            nossa equipe de análise.
                         </p>
                         {/* CTA */}
                         <motion.div
@@ -200,12 +221,15 @@ export function Hero() {
                             <Button
                                 onClick={scrollToCTA}
                                 size="lg"
-                                className="gradient-gold text-accent-foreground font-bold text-lg px-12 py-7 shadow-gold hover:scale-105 transition-transform">
-                                QUERO ACESSO AGORA
+                                className="gradient-gold text-accent-foreground font-bold text-lg px-12 py-7 shadow-gold hover:scale-105 transition-transform relative overflow-hidden group">
+                                <span className="relative z-10">GARANTIR MINHA VAGA AGORA</span>
+                                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></span>
                             </Button>
 
                             <p className="text-sm text-muted-foreground">
-                                ✓ Acesso Imediato • ✓ Garantia de 7 Dias • ✓ Suporte Exclusivo
+                                <span className="text-green-500">✓</span> Acesso Imediato ao Grupo VIP{"  "}
+                                <span className="text-green-500">✓</span> Atualizações Mensais{" "}
+                                <span className="text-green-500">✓</span> Garantia de 7 Dias
                             </p>
                         </motion.div>
                     </motion.div>

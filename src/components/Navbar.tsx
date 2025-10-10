@@ -27,7 +27,7 @@ export function Navbar() {
             }`}>
             <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <span className="text-xl font-bold">Carteira dos Tubarões</span>
+                    <img src="/logo.png" alt="Carteira dos Tubarões" className="h-8 md:h-10" />
                 </div>
 
                 <div className="flex items-center gap-4">
