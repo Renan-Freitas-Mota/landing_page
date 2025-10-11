@@ -48,7 +48,7 @@ export function CryptoCarousel() {
                         As Criptomoedas que <span className="text-gradient-gold">Multiplicaram Patrimônios</span>
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                        Veja a performance real das principais criptos dos grandes fundos
+                        Veja a performance real das criptos da nossa carteira secreta
                     </p>
                 </motion.div>
 
@@ -56,7 +56,8 @@ export function CryptoCarousel() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.2, duration: 0.6 }}>
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="px-8 md:px-12">
                     <Carousel
                         opts={{
                             align: "start",
@@ -86,8 +87,8 @@ export function CryptoCarousel() {
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <CarouselPrevious className="glass hover:shadow-glow" />
-                        <CarouselNext className="glass hover:shadow-glow" />
+                        <CarouselPrevious className="glass hover:shadow-glow -left-10 md:-left-10" />
+                        <CarouselNext className="glass hover:shadow-glow -right-10 md:-right-10" />
                     </Carousel>
                 </motion.div>
             </div>

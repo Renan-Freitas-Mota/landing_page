@@ -162,7 +162,7 @@ export function Hero() {
         <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-x-hidden">
             {/* Background decorative elements */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-20 right-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
+                <div className="absolute top-20 right-10 w-72 h-72 bg-green-500/20 rounded-full blur-3xl" />
                 <div className="absolute bottom-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
             </div>
 
@@ -180,7 +180,7 @@ export function Hero() {
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-center lg:text-end px-2 sm:px-4 lg:px-0 overflow-hidden">
+                        className="text-center lg:text-end px-2 sm:px-4 lg:px-0 ">
                         {/* Badge de Exclusividade */}
                         <motion.div
                             initial={{ opacity: 0, y: -10 }}
@@ -202,16 +202,10 @@ export function Hero() {
                             <span className="block">DOS GRANDES</span>
                             <span className="block">TUBARÕES</span>
                         </h1>
-                        <p className="text-lg sm:text-xl md:text-2xl text-foreground/90 mb-4 font-semibold break-words">
+                        <p className="text-lg sm:text-xl md:text-2xl text-foreground/90 mb-10 font-semibold break-words">
                             As 10 criptomoedas que{" "}
                             <span className="text-secondary font-black">fundos bilionários</span>{" "}
                             <span className="block mt-2">estão acumulando em silêncio</span>
-                        </p>
-                        <p className="text-base md:text-lg text-muted-foreground italic">
-                            Criptomoedas com movimentação real de baleias
-                        </p>
-                        <p className="text-base md:text-lg text-muted-foreground mb-10 italic">
-                            Monitoradas mensalmente por nossa equipe de análise.
                         </p>
                         {/* CTA */}
                         <motion.div
@@ -230,8 +224,9 @@ export function Hero() {
                             </Button>
 
                             <p className="text-sm text-muted-foreground text-center lg:text-right">
+                                <span className="text-green-500">✓</span> Movimentação Real de Baleias{" "}
+                                <span className="text-green-500">✓</span> Monitoramento Diário{" "}
                                 <span className="text-green-500">✓</span> Acesso Imediato ao Grupo VIP{"  "}
-                                <span className="text-green-500">✓</span> Atualizações Mensais{" "}
                                 <span className="text-green-500">✓</span> Garantia de 7 Dias
                             </p>
                         </motion.div>
