@@ -34,7 +34,9 @@ export function InvestmentCalculator() {
                                     ✎ Altere o valor
                                 </span>
                                 <div className="relative flex items-center">
-                                    <span className="absolute left-2.5 text-foreground/70 text-sm font-medium">R$</span>
+                                    <span className="absolute left-2.5 text-foreground/70 text-sm font-medium">
+                                        R$
+                                    </span>
                                     <input
                                         type="number"
                                         value={investmentValue}
@@ -63,12 +65,15 @@ export function InvestmentCalculator() {
                             <p className="text-sm sm:text-base text-muted-foreground mt-2 font-medium">
                                 🚀 Retorno de{" "}
                                 <span className="text-[#f59e0b] font-bold">
-                                    +{(calculateReturn(investmentValue) - (parseFloat(investmentValue) || 0)).toLocaleString("pt-BR", {
+                                    +
+                                    {(
+                                        calculateReturn(investmentValue) - (parseFloat(investmentValue) || 0)
+                                    ).toLocaleString("pt-BR", {
                                         style: "currency",
                                         currency: "BRL",
                                     })}
-                                </span>
-                                {" "}(437%)
+                                </span>{" "}
+                                (437%)
                             </p>
                         </div>
                     </div>
@@ -77,4 +82,3 @@ export function InvestmentCalculator() {
         </section>
     );
 }
-

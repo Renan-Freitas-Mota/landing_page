@@ -57,8 +57,8 @@ export function ProductGrid() {
                             transition={{ delay: index * 0.1, duration: 0.5 }}>
                             <Card className="p-8 glass border-border/50 hover:border-accent/50 transition-all hover:shadow-gold hover:-translate-y-1 h-full">
                                 <div className="flex gap-6 items-start">
-                                    <div className="w-40 h-40 rounded-2xl gradient-gold flex items-center justify-center shadow-gold flex-shrink-0">
-                                        <feature.icon className="w-20 h-20 text-accent-foreground" />
+                                    <div className="w-16 h-16 md:w-40 md:h-40 rounded-2xl gradient-gold flex items-center justify-center shadow-gold flex-shrink-0">
+                                        <feature.icon className="w-8 h-8 md:w-20 md:h-20 text-accent-foreground" />
                                     </div>
                                     <div className="flex-1">
                                         <h3 className="text-2xl font-bold mb-1">{feature.title}</h3>

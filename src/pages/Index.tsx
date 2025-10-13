@@ -23,7 +23,7 @@ const Index = () => {
       <NewsGrid />
       <Testimonials />
       <ProductGrid />
-      {/* <About /> */}
+      <About />
       <FinalCTA />
       <FAQ />
       <Footer />
