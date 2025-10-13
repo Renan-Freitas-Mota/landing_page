@@ -167,9 +167,8 @@ export function Hero() {
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
-    const scrollToCTA = () => {
-        const ctaSection = document.getElementById("final-cta");
-        ctaSection?.scrollIntoView({ behavior: "smooth" });
+    const handleCTAClick = () => {
+        window.open("https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797", "_blank");
     };
 
     return (
@@ -228,7 +227,7 @@ export function Hero() {
                             transition={{ delay: 0.5, duration: 0.8 }}
                             className="flex flex-col items-center lg:items-end gap-6">
                             <Button
-                                onClick={scrollToCTA}
+                                onClick={handleCTAClick}
                                 size="lg"
                                 className="gradient-gold text-accent-foreground font-bold text-base sm:text-lg px-6 sm:px-12 py-6 sm:py-7 shadow-gold hover:scale-105 transition-transform relative overflow-hidden group w-full sm:w-auto max-w-full">
                                 <span className="relative z-10 whitespace-normal sm:whitespace-nowrap text-center">
@@ -253,6 +252,9 @@ export function Hero() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3, duration: 0.8 }}
                         className="h-[60vh] sm:h-[55vh] lg:h-[65vh] px-2 sm:px-4 lg:px-0 overflow-hidden">
+                        <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 text-center lg:text-left break-words">
+                            Rendimento em 12 meses: Carteira dos Tubarões, Ibovespa e Selic
+                        </h2>
                         <div className="glass rounded-2xl p-2 sm:p-3 lg:p-4 h-full flex flex-col overflow-hidden">
                             <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 break-words">
                                 Comparativo de Rentabilidade - Últimos 12 Meses

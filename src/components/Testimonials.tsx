@@ -49,6 +49,13 @@ export function Testimonials() {
                     <h2 className="text-4xl md:text-5xl font-black mb-4">
                         Resultados de quem já está <span className="text-gradient-gold">Lucrando</span>
                     </h2>
+                    <p className="text-lg text-muted-foreground flex items-center justify-center gap-2">
+                        Arraste para ver mais 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                            <path d="m9 18 6-6-6-6"/>
+                        </svg>
+                    </p>
+
                 </motion.div>
 
                 <motion.div

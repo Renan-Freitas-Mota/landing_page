@@ -38,8 +38,23 @@ export function NewsGrid() {
                         Grandes Fundos já Estão{" "}
                         <span className="text-gradient-gold">Investindo Nessas Moedas</span>
                     </h2>
+                    <p className="text-lg text-muted-foreground flex items-center justify-center gap-2">
+                        Arraste para ver mais
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="text-white">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                    </p>
                 </motion.div>
-
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -55,7 +70,14 @@ export function NewsGrid() {
                         <CarouselContent className="-ml-4">
                             {news.map((item, index) => (
                                 <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                                    <Card className="overflow-hidden glass border-border/50 hover:border-primary/50 transition-all hover:shadow-glow">
+                                    <Card
+                                        className="overflow-hidden glass border-border/50 hover:border-primary/50 transition-all hover:shadow-glow cursor-pointer"
+                                        onClick={() =>
+                                            window.open(
+                                                "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797",
+                                                "_blank"
+                                            )
+                                        }>
                                         <div className="aspect-[5/7] w-full overflow-hidden">
                                             <img
                                                 src={item.image}

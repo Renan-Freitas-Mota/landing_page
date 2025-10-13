@@ -52,6 +52,7 @@ export function FinalCTA() {
 
           <Button 
             size="lg"
+            onClick={() => window.open("https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797", "_blank")}
             className="gradient-gold text-accent-foreground font-bold text-xl px-16 py-8 shadow-gold hover:scale-105 transition-transform mb-8"
           >
             GARANTIR MINHA VAGA AGORA

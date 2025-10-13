@@ -15,9 +15,8 @@ export function FloatingCTA() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToCTA = () => {
-    const ctaSection = document.getElementById('final-cta');
-    ctaSection?.scrollIntoView({ behavior: 'smooth' });
+  const handleCTAClick = () => {
+    window.open("https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797", "_blank");
   };
 
   return (
@@ -30,7 +29,7 @@ export function FloatingCTA() {
           className="fixed bottom-6 right-6 z-40 flex flex-col gap-2"
         >
           <Button
-            onClick={scrollToCTA}
+            onClick={handleCTAClick}
             size="lg"
             className="gradient-gold text-accent-foreground font-bold shadow-gold hover:scale-105 transition-transform"
           >
