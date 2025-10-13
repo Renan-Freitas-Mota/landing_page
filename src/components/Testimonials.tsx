@@ -14,7 +14,7 @@ const testimonials = [
         video_id: "68e3f281098b0e418ea0b327",
     },
     {
-        gain: "7.900 em mês",
+        gain: "7.900 de lucro",
         video_id: "68e40c81cd441edf15f99a21",
     },
     {
@@ -49,9 +49,6 @@ export function Testimonials() {
                     <h2 className="text-4xl md:text-5xl font-black mb-4">
                         Resultados de quem já está <span className="text-gradient-gold">Lucrando</span>
                     </h2>
-                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                        Veja o que nossos alunos estão dizendo sobre seus resultados
-                    </p>
                 </motion.div>
 
                 <motion.div

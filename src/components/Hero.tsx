@@ -14,6 +14,7 @@ import {
     LabelList,
 } from "recharts";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const chartData = [
     // Mês 1
@@ -153,6 +154,19 @@ const chartData = [
 ];
 
 export function Hero() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 1024);
+        };
+
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
     const scrollToCTA = () => {
         const ctaSection = document.getElementById("final-cta");
         ctaSection?.scrollIntoView({ behavior: "smooth" });
@@ -204,8 +218,8 @@ export function Hero() {
                         </h1>
                         <p className="text-lg sm:text-xl md:text-2xl text-foreground/90 mb-10 font-semibold break-words">
                             As 10 criptomoedas que{" "}
-                            <span className="text-secondary font-black">fundos bilionários</span>{" "}
-                            <span className="block mt-2">estão acumulando em silêncio</span>
+                            <span className="text-secondary font-black">fundos bilionários</span> estão acumulando
+                            em silêncio
                         </p>
                         {/* CTA */}
                         <motion.div
@@ -227,7 +241,8 @@ export function Hero() {
                                 <span className="text-green-500">✓</span> Movimentação Real de Baleias{" "}
                                 <span className="text-green-500">✓</span> Monitoramento Diário{" "}
                                 <span className="text-green-500">✓</span> Acesso Imediato ao Grupo VIP{"  "}
-                                <span className="text-green-500">✓</span> Garantia de 7 Dias
+                                <span className="text-green-500">✓</span> Vídeo Aulas Exclusivas{"  "}
+                                <span className="text-green-500">✓</span> Garantia de 7 Dias{"  "}
                             </p>
                         </motion.div>
                     </motion.div>
@@ -237,7 +252,7 @@ export function Hero() {
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3, duration: 0.8 }}
-                        className="h-[65vh] px-2 sm:px-4 lg:px-0 overflow-hidden">
+                        className="h-[60vh] sm:h-[55vh] lg:h-[65vh] px-2 sm:px-4 lg:px-0 overflow-hidden">
                         <div className="glass rounded-2xl p-2 sm:p-3 lg:p-4 h-full flex flex-col overflow-hidden">
                             <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 break-words">
                                 Comparativo de Rentabilidade - Últimos 12 Meses
@@ -326,10 +341,16 @@ export function Hero() {
                                         contentStyle={{
                                             backgroundColor: "hsl(var(--background))",
                                             border: "1px solid hsl(var(--border))",
-                                            borderRadius: "8px",
+                                            borderRadius: isMobile ? "6px" : "8px",
+                                            fontSize: isMobile ? "12px" : undefined,
+                                            padding: isMobile ? "4px 8px" : undefined,
                                         }}
-                                        allowEscapeViewBox={{ x: false, y: false }}
-                                        wrapperStyle={{ outline: "none" }}
+                                        allowEscapeViewBox={
+                                            isMobile ? { x: true, y: true } : { x: false, y: false }
+                                        }
+                                        wrapperStyle={{ outline: "none", zIndex: isMobile ? 100 : undefined }}
+                                        position={isMobile ? { y: -100 } : undefined}
+                                        offset={isMobile ? -100 : undefined}
                                     />
                                     {/* Tesouro Selic - 15% (roxo/lilás) */}
                                     <Area
