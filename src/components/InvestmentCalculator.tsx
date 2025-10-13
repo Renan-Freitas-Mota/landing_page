@@ -18,6 +18,7 @@ export function InvestmentCalculator() {
     return (
         <section className="py-4 px-4 overflow-hidden">
             <div className="w-full max-w-4xl mx-auto">
+                <h2 className="text-2xl font-bold mb-4 text-center">SIMULADOR DE INVESTIMENTO</h2>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -29,8 +30,8 @@ export function InvestmentCalculator() {
                         <div className="flex flex-wrap items-center justify-center gap-2 text-base sm:text-lg font-semibold">
                             <span className="text-foreground">Se você tivesse investido</span>
                             <div className="relative group">
-                                <span className="absolute -top-5 -left-1 text-xs text-[#f59e0b] opacity-0 group-hover:opacity-100 transition-opacity">
-                                    ✎ Edite
+                                <span className="absolute -top-5 -left-1 text-xs text-[#f59e0b] transition-opacity">
+                                    ✎ Altere o valor
                                 </span>
                                 <div className="relative flex items-center">
                                     <span className="absolute left-2.5 text-foreground/70 text-sm font-medium">R$</span>

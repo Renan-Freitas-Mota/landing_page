@@ -175,7 +175,7 @@ export function Hero() {
     };
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-24 pb-8 overflow-x-hidden">
+        <section className="relative min-h-screen flex items-center justify-center pt-24 pb-2 overflow-x-hidden">
             {/* Background decorative elements */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-20 right-10 w-72 h-72 bg-green-500/20 rounded-full blur-3xl" />
@@ -256,7 +256,7 @@ export function Hero() {
                         transition={{ delay: 0.3, duration: 0.8 }}
                         className="px-2 sm:px-4 lg:px-0 h-[80vh] sm:h-[55vh] lg:h-[65vh] overflow-hidden">
                         <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 text-center lg:text-left break-words">
-                            Rendimento em 12 meses: Carteira dos Tubarões, Ibovespa e Selic
+                            Rendimento em 12 meses: Carteira dos Tubarões VS Ibovespa VS Tesouro Selic
                         </h2>
                         <div className="glass rounded-2xl p-2 sm:p-3 lg:p-4 h-full flex flex-col overflow-hidden">
                             <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 break-words">
