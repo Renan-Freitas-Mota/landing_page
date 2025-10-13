@@ -31,12 +31,7 @@ export function Navbar() {
 
                 <div className="flex items-center gap-4">
                     {/* <CountdownTimer /> */}
-                    <Button
-                        onClick={handleCTAClick}
-                        size="lg"
-                        className="gradient-gold text-accent-foreground font-bold shadow-gold hover:scale-105 transition-transform">
-                        Liberar Acesso Vitalício
-                    </Button>
+                    < CountdownTimer />
                 </div>
             </div>
         </nav>
