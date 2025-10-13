@@ -6,27 +6,27 @@ import { Helmet } from "react-helmet";
 
 const testimonials = [
     {
-        gain: "+54% em 2 meses!",
+        gain: "+54% em 2 meses",
         video_id: "68e3f767905b162885c122f8",
     },
     {
-        gain: "+40% em 2 mês!",
+        gain: "+40% em 2 mês",
         video_id: "68e3f281098b0e418ea0b327",
     },
     {
-        gain: "7.900 em mês!",
+        gain: "7.900 em mês",
         video_id: "68e40c81cd441edf15f99a21",
     },
     {
-        gain: "+72% em três meses!",
+        gain: "+72% em três meses",
         video_id: "68e40a49464781c9d31f7846",
     },
     {
-        gain: "2300 dólares em 18 dias!",
+        gain: "2300 dólares em 18 dias",
         video_id: "68e40a42cd441edf15f99780",
     },
     {
-        gain: "+4800 reais de lucro ",
+        gain: "+4800 reais de lucro",
         video_id: "68e40a3d8507bc6d6b028099",
     },
 ];
@@ -35,7 +35,7 @@ export function Testimonials() {
     const baseScriptUrl = "https://scripts.converteai.net/e4afbe22-7a6e-4dd8-9576-24f2a422d026/players";
 
     return (
-        <section className="py-24 px-4 bg-card/30">
+        <section className="py-12 px-4 bg-card/30">
             <div className="container mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
