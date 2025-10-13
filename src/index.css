@@ -92,6 +92,12 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    .glass-gold {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(251, 191, 36, 0.05));
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
     .text-gradient-gold {
         background: var(--gradient-gold);
         -webkit-background-clip: text;
