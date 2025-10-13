@@ -35,7 +35,7 @@ export function Navbar() {
                         onClick={handleCTAClick}
                         size="lg"
                         className="gradient-gold text-accent-foreground font-bold shadow-gold hover:scale-105 transition-transform">
-                        Adquirir Para Sempre
+                        Liberar Acesso Vitalício
                     </Button>
                 </div>
             </div>

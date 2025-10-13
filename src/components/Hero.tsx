@@ -234,7 +234,7 @@ export function Hero() {
                                 size="lg"
                                 className="gradient-gold text-accent-foreground font-bold text-base sm:text-lg px-6 sm:px-12 py-6 sm:py-7 shadow-gold hover:scale-105 transition-transform relative overflow-hidden group w-full sm:w-auto max-w-full">
                                 <span className="relative z-10 whitespace-normal sm:whitespace-nowrap text-center">
-                                    GARANTIR MINHA VAGA AGORA
+                                    Liberar Acesso Vitalício
                                 </span>
                                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></span>
                             </Button>

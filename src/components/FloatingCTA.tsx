@@ -34,7 +34,7 @@ export function FloatingCTA() {
             className="gradient-gold text-accent-foreground font-bold shadow-gold hover:scale-105 transition-transform"
           >
             <ArrowUp className="w-5 h-5 mr-2" />
-            Quero Acesso
+            Liberar Acesso Vitalício
           </Button>
         </motion.div>
       )}

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function About() {
     return (
-        <section className="container relative overflow-hidden bg-card/30">
+        <section className="container relative overflow-hidden">
             <div className="grid lg:grid-cols-2 h-[750px]">
                 {/* Left side - Content */}
                 <motion.div
