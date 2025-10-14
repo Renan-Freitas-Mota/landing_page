@@ -109,8 +109,8 @@ export function Testimonials() {
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <CarouselPrevious className="glass hover:shadow-glow" />
-                        <CarouselNext className="glass hover:shadow-glow" />
+                        <CarouselPrevious className="glass hover:shadow-glow m-2" />
+                        <CarouselNext className="glass hover:shadow-glow m-2" />
                     </Carousel>
                 </motion.div>
             </div>
