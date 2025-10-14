@@ -165,7 +165,7 @@ export function Hero() {
     };
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-24 pb-2 overflow-x-hidden">
+        <section className="relative min-h-screen flex items-center justify-center pt-8 sm:pt-16 md:pt-24 pb-12 overflow-x-hidden">
             {/* Background decorative elements */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-20 right-10 w-72 h-72 bg-green-500/20 rounded-full blur-3xl" />
@@ -246,12 +246,12 @@ export function Hero() {
                                 {inView ? (
                                     <Suspense
                                         fallback={
-                                            <div className="glass rounded-2xl h-[85vh] sm:h-[70vh] lg:h-[65vh] w-full animate-pulse bg-muted/20" />
+                                            <div className="glass rounded-2xl min-h-[400px] w-full animate-pulse bg-muted/20" />
                                         }>
                                         <LazyHeroChart isMobile={isMobile} />
                                     </Suspense>
                                 ) : (
-                                    <div className="glass rounded-2xl h-[65vh] sm:h-[60vh] lg:h-[50vh] w-full animate-pulse bg-muted/10" />
+                                    <div className="glass rounded-2xl min-h-[400px] w-full animate-pulse bg-muted/10" />
                                 )}
                             </div>
                         )}

@@ -16,7 +16,7 @@ export function InvestmentCalculator() {
     };
 
     return (
-        <section className="py-4 px-4 overflow-hidden">
+        <section className="pb-24 px-4 overflow-hidden">
             <div className="w-full max-w-4xl mx-auto">
                 <h2 className="text-2xl font-bold mb-4 text-center">SIMULADOR DE INVESTIMENTO</h2>
                 <motion.div
@@ -28,13 +28,19 @@ export function InvestmentCalculator() {
                     <div className="flex flex-col gap-3">
                         {/* Texto e Input */}
                         <div className="flex flex-wrap items-center justify-center gap-2 text-base sm:text-lg font-semibold p-4">
-                            <label htmlFor="investment-input" className="text-foreground mb-4">Se você tivesse investido</label>
+                            <label htmlFor="investment-input" className="text-foreground mb-4">
+                                Se você tivesse investido
+                            </label>
                             <div className="relative group">
-                                <span className="absolute -top-5 left-2 text-xs text-[#f59e0b] transition-opacity" aria-hidden="true">
+                                <span
+                                    className="absolute -top-5 left-2 text-xs text-[#f59e0b] transition-opacity"
+                                    aria-hidden="true">
                                     ✎ Altere o valor
                                 </span>
                                 <div className="relative flex items-center">
-                                    <span className="absolute left-2.5 text-foreground/70 text-sm font-medium" aria-hidden="true">
+                                    <span
+                                        className="absolute left-2.5 text-foreground/70 text-sm font-medium"
+                                        aria-hidden="true">
                                         R$
                                     </span>
                                     <input
@@ -54,19 +60,19 @@ export function InvestmentCalculator() {
 
                         {/* Resultado */}
                         <div className="text-center">
-                            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#f59e0b]/20 via-[#f59e0b]/10 to-[#f59e0b]/20 px-4 py-3 rounded-lg border border-[#f59e0b]/40">
-                                <TrendingUp className="w-6 h-6 text-[#f59e0b] animate-pulse" />
-                                <span className="text-3xl sm:text-4xl font-black text-gradient-gold">
+                            <div className="inline-flex flex-wrap items-center justify-center gap-2 bg-gradient-to-r from-[#f59e0b]/20 via-[#f59e0b]/10 to-[#f59e0b]/20 px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-[#f59e0b]/40">
+                                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-[#f59e0b] animate-pulse flex-shrink-0" />
+                                <span className="text-2xl sm:text-3xl md:text-4xl font-black text-gradient-gold break-all">
                                     {new Intl.NumberFormat("pt-BR", {
                                         style: "currency",
                                         currency: "BRL",
                                     }).format(calculateReturn(investmentValue))}
                                 </span>
-                                <TrendingUp className="w-6 h-6 text-[#f59e0b] animate-pulse" />
+                                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-[#f59e0b] animate-pulse flex-shrink-0" />
                             </div>
-                            <p className="text-sm sm:text-base text-muted-foreground mt-2 font-medium">
+                            <p className="text-xs sm:text-sm md:text-base text-muted-foreground mt-2 font-medium px-2">
                                 🚀 Retorno de{" "}
-                                <span className="text-[#f59e0b] font-bold">
+                                <span className="text-[#f59e0b] font-bold whitespace-nowrap">
                                     +
                                     {(
                                         calculateReturn(investmentValue) - (parseFloat(investmentValue) || 0)

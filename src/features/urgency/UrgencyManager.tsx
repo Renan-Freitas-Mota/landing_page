@@ -18,6 +18,7 @@ const WAITLIST_MAIL =
     "mailto:contato.r7investimentos@gmail.com?subject=Lista%20de%20espera%20-%20Carteira%20dos%20Tubar%C3%B5es";
 const NOTIFY_MAIL =
     "mailto:contato.r7investimentos@gmail.com?subject=Quero%20ser%20notificado%20-%20Carteira%20dos%20Tubar%C3%B5es";
+const OFFER_MODAL_SHOWN_KEY = "offer_expired_modal_shown";
 
 export function UrgencyManager() {
     const { totalSeconds, isExpired, resetCountdown, canReopen } = useCountdownContext();
@@ -32,6 +33,10 @@ export function UrgencyManager() {
     const [secondWarningOpen, setSecondWarningOpen] = useState(false);
     const [lastChanceOpen, setLastChanceOpen] = useState(false);
     const [offerClosedOpen, setOfferClosedOpen] = useState(false);
+    const [hasShownOfferModal, setHasShownOfferModal] = useState<boolean>(() => {
+        if (typeof window === "undefined") return false;
+        return window.localStorage.getItem(OFFER_MODAL_SHOWN_KEY) === "1";
+    });
 
     // Pre-compute dynamic thresholds based on total countdown duration
     const durationSeconds = Math.floor(COUNTDOWN_DURATION / 1000);
@@ -81,14 +86,22 @@ export function UrgencyManager() {
         }
     }, [totalSeconds, thresholdOneFifth]);
 
-    // Lock the page when the offer expires
+    // Lock the page when the offer expires (only once per countdown cycle)
     useEffect(() => {
         if (isExpired) {
-            setOfferClosedOpen(true);
+            if (!hasShownOfferModal) {
+                setOfferClosedOpen(true);
+                if (typeof window !== "undefined") {
+                    window.localStorage.setItem(OFFER_MODAL_SHOWN_KEY, "1");
+                }
+                setHasShownOfferModal(true);
+            } else {
+                setOfferClosedOpen(false);
+            }
         } else {
             setOfferClosedOpen(false);
         }
-    }, [isExpired]);
+    }, [isExpired, hasShownOfferModal]);
 
     const handleCheckout = () => {
         window.open(CHECKOUT_URL, "_blank");
@@ -103,6 +116,10 @@ export function UrgencyManager() {
     };
 
     const handleReopen = () => {
+        if (typeof window !== "undefined") {
+            window.localStorage.removeItem(OFFER_MODAL_SHOWN_KEY);
+        }
+        setHasShownOfferModal(false);
         resetCountdown();
     };
 

@@ -131,12 +131,12 @@ export function HeroChart({ isMobile }: { isMobile: boolean }) {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="px-2 sm:px-4 lg:px-0 h-[65vh] sm:h-[60vh] lg:h-[55vh] overflow-visible"
+            className="px-2 sm:px-4 lg:px-0 w-full"
         >
             <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 text-center lg:text-left break-words">
-                Rendimento em 12 meses: Carteira dos Tubarões VS Ibovespa e Tesouro Selic
+                Carteira dos Tubarões VS Ibovespa e Tesouro Selic
             </h2>
-            <div className="glass rounded-2xl p-2 sm:p-3 lg:p-4 h-full flex flex-col">
+            <div className="glass rounded-2xl p-2 sm:p-3 lg:p-4 flex flex-col">
                 <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 break-words">
                     Comparativo de Rentabilidade - Últimos 12 Meses
                 </h3>
@@ -156,8 +156,8 @@ export function HeroChart({ isMobile }: { isMobile: boolean }) {
                     </div>
                 </div>
 
-                <div className="flex-1 min-h-[350px] sm:min-h-[400px] overflow-visible">
-                    <ResponsiveContainer width="100%" height="100%">
+                <div className="w-full h-[300px] sm:h-[350px] lg:h-[400px]">
+                    <ResponsiveContainer width="100%" height="90%">
                         <AreaChart data={chartData} margin={{ top: 30, right: 50, left: -10, bottom: 30 }}>
                             <defs>
                                 <linearGradient id="colorSelic" x1="0" y1="0" x2="0" y2="1">
