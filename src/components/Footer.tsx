@@ -146,25 +146,13 @@ export function Footer() {
                         <h3 className="font-bold mb-4">Redes Sociais</h3>
                         <div className="flex gap-4">
                             <a
-                                href="#"
+                                href="https://www.instagram.com/r7investimentos.oficial"
                                 className="w-10 h-10 rounded-lg glass flex items-center justify-center hover:border-primary/50 transition-colors"
                                 aria-label="Instagram">
                                 <Instagram className="w-5 h-5" />
                             </a>
                             <a
-                                href="#"
-                                className="w-10 h-10 rounded-lg glass flex items-center justify-center hover:border-primary/50 transition-colors"
-                                aria-label="YouTube">
-                                <Youtube className="w-5 h-5" />
-                            </a>
-                            <a
-                                href="#"
-                                className="w-10 h-10 rounded-lg glass flex items-center justify-center hover:border-primary/50 transition-colors"
-                                aria-label="Twitter">
-                                <Twitter className="w-5 h-5" />
-                            </a>
-                            <a
-                                href="#"
+                                href="mailto:contato.r7investimentos@gmail.com"
                                 className="w-10 h-10 rounded-lg glass flex items-center justify-center hover:border-primary/50 transition-colors"
                                 aria-label="Email">
                                 <Mail className="w-5 h-5" />

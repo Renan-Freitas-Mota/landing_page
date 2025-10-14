@@ -196,12 +196,12 @@ export function UrgencyManager() {
                 }}>
                 <DialogContent
                     className={cn(
-                        "max-w-[95vw] sm:max-w-lg border-2 border-red-500/40 bg-background/95 backdrop-blur-xl",
+                        "w-[calc(100vw-2rem)] max-w-lg border-2 border-red-500/40 bg-background/95 backdrop-blur-xl",
                         "data-[state=open]:animate-in data-[state=closed]:animate-out",
-                        "mx-4"
+                        "p-4 sm:p-6"
                     )}>
-                    <DialogHeader>
-                        <DialogTitle className="text-2xl sm:text-3xl font-black text-center text-red-500">
+                    <DialogHeader className="space-y-2 sm:space-y-3">
+                        <DialogTitle className="text-xl sm:text-2xl md:text-3xl font-black text-center text-red-500">
                             ⏰ ÚLTIMA CHANCE!
                         </DialogTitle>
                         <DialogDescription className="text-center text-sm sm:text-base text-foreground font-semibold">

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { CountdownTimer } from "@/components/CountdownTimer";
+import { useCountdownContext } from "@/context/CountdownContext";
 
 export function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const { isExpired } = useCountdownContext();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -22,9 +24,11 @@ export function Navbar() {
                 <div className="flex items-center gap-2">
                     <img src="/logo.png" alt="Carteira dos Tubarões" className="h-8 md:h-10" />
                 </div>
-                <div className="flex">
-                    <CountdownTimer />
-                </div>
+                {!isExpired && (
+                    <div className="flex">
+                        <CountdownTimer />
+                    </div>
+                )}
             </div>
         </nav>
     );

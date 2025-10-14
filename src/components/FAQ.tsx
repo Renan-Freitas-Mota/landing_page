@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     question: 'Quanto preciso investir nas criptomoedas?',
-    answer: 'Você pode começar com qualquer valor a partir de R$100. Quanto maior o valor investido, maiores podem ser os ganhos proporcionais. Mas o importante é começar dentro da sua realidade financeira.'
+    answer: 'Não! O método também foi desenvolvido pensando em iniciantes. As videoaulas ensinam tudo do zero, desde a criação da conta até as estratégias de compra e venda. Você vai aprender fazendo.'
   },
   {
     question: 'Como é feito o pagamento?',
@@ -29,11 +29,11 @@ const faqs = [
   },
   {
     question: 'Quanto tempo leva para ver resultados?',
-    answer: 'Os resultados podem variar de acordo com o valor investido e o momento do mercado. Alguns alunos veem resultados nas primeiras semanas, outros em alguns meses. O importante é seguir as estratégias ensinadas e ter consistência.'
+    answer: 'Alguns alunos veem resultados nas primeiras semanas, outros em alguns meses. O importante é seguir as estratégias ensinadas com consistência.'
   },
   {
     question: 'Preciso ficar o dia todo monitorando o mercado?',
-    answer: 'Não! Uma das maiores vantagens do método é que você pode dedicar apenas alguns minutos por dia. Os alertas estratégicos avisam sobre os momentos importantes, e as criptomoedas selecionadas são para investimentos de médio/longo prazo.'
+    answer: 'Não! Uma das maiores vantagens do método é que você pode dedicar apenas alguns minutos por semana. Os alertas estratégicos avisam sobre os momentos importantes, e as criptomoedas selecionadas não são para fazer operaçaões diárias, os investimentos duram dias/semanas.'
   },
   {
     question: 'O acesso é vitalício mesmo?',

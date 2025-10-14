@@ -242,13 +242,16 @@ export function Hero() {
                     {/* Right Column - Chart (lazy) */}
                     <InView triggerOnce rootMargin="400px">
                         {({ inView, ref }) => (
-                            <div ref={ref} className="px-2 sm:px-4 lg:px-0 h-[65vh] sm:h-[60vh] lg:h-[75vh] overflow-hidden">
+                            <div ref={ref} className="w-full">
                                 {inView ? (
-                                    <Suspense fallback={<div className="glass rounded-2xl h-full w-full animate-pulse bg-muted/20" />}> 
+                                    <Suspense
+                                        fallback={
+                                            <div className="glass rounded-2xl h-[85vh] sm:h-[70vh] lg:h-[65vh] w-full animate-pulse bg-muted/20" />
+                                        }>
                                         <LazyHeroChart isMobile={isMobile} />
                                     </Suspense>
                                 ) : (
-                                    <div className="glass rounded-2xl h-full w-full animate-pulse bg-muted/10" />
+                                    <div className="glass rounded-2xl h-[65vh] sm:h-[60vh] lg:h-[50vh] w-full animate-pulse bg-muted/10" />
                                 )}
                             </div>
                         )}

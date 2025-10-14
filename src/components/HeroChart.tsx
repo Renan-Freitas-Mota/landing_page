@@ -131,17 +131,17 @@ export function HeroChart({ isMobile }: { isMobile: boolean }) {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="px-2 sm:px-4 lg:px-0 h-[60vh] sm:h-[55vh] lg:h-[65vh] overflow-hidden"
+            className="px-2 sm:px-4 lg:px-0 h-[65vh] sm:h-[60vh] lg:h-[55vh] overflow-visible"
         >
             <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 text-center lg:text-left break-words">
                 Rendimento em 12 meses: Carteira dos Tubarões VS Ibovespa e Tesouro Selic
             </h2>
-            <div className="glass rounded-2xl p-2 sm:p-3 lg:p-4 h-full flex flex-col overflow-hidden">
+            <div className="glass rounded-2xl p-2 sm:p-3 lg:p-4 h-full flex flex-col">
                 <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 break-words">
                     Comparativo de Rentabilidade - Últimos 12 Meses
                 </h3>
 
-                <div className="flex flex-wrap gap-3 lg:gap-4 mb-4 justify-center lg:justify-start">
+                <div className="flex flex-wrap gap-3 lg:gap-4 mb-3 justify-center lg:justify-start">
                     <div className="flex items-center gap-2">
                         <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: "#f59e0b" }}></div>
                         <span className="text-xs lg:text-sm font-medium">Carteira dos Tubarões</span>
@@ -156,9 +156,9 @@ export function HeroChart({ isMobile }: { isMobile: boolean }) {
                     </div>
                 </div>
 
-                <div className="flex-1 min-h-0">
+                <div className="flex-1 min-h-[350px] sm:min-h-[400px] overflow-visible">
                     <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={chartData} margin={{ top: 10, right: 50, left: -10, bottom: 30 }}>
+                        <AreaChart data={chartData} margin={{ top: 30, right: 50, left: -10, bottom: 30 }}>
                             <defs>
                                 <linearGradient id="colorSelic" x1="0" y1="0" x2="0" y2="1">
                                     <stop offset="5%" stopColor="#a78bfa" stopOpacity={0.8} />

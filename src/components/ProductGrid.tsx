@@ -13,7 +13,7 @@ const features = [
         icon: Users,
         title: "Acesso ao Grupo VIP",
         description:
-            "Entre para nossa comunidade exclusiva no Whatsapp. Troque experiências, tire dúvidas e receba insights diários de outros investidores de sucesso.",
+            "Tudo o que você precisa: atualizações da carteira, dicas e orientações direto no seu celular - de forma simples e prática.",
     },
     {
         icon: Video,
@@ -64,7 +64,7 @@ export function ProductGrid() {
                                         <h3 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">
                                             {feature.title}
                                         </h3>
-                                        <p className="text-muted-foreground leading-relaxed text-xs sm:text-base">
+                                        <p className="text-muted-foreground leading-relaxed text-base sm:text-xl">
                                             {feature.description}
                                         </p>
                                     </div>

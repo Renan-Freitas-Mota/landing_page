@@ -72,10 +72,10 @@ export function FinalCTA() {
                             <>
                                 <div className="flex items-center justify-center gap-2 sm:gap-4 mb-2">
                                     <span className="text-lg sm:text-xl md:text-2xl text-muted-foreground line-through">
-                                        R$ 497,00
+                                        R$ 97,00
                                     </span>
                                     <Badge className="bg-destructive text-destructive-foreground font-bold px-2 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm">
-                                        -94%
+                                        -70%
                                     </Badge>
                                 </div>
                                 <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gradient-gold mb-2">
@@ -109,9 +109,9 @@ export function FinalCTA() {
                         className={`w-full sm:w-auto font-bold text-base sm:text-lg md:text-xl px-6 sm:px-10 md:px-16 py-3 sm:py-4 md:py-5 hover:scale-105 transition-transform mb-4 md:mb-5 ${
                             !isExpired 
                                 ? "gradient-gold text-accent-foreground shadow-gold" 
-                                : "bg-primary text-primary-foreground"
+                                : "gradient-gold text-accent-foreground shadow-gold"
                         }`}>
-                        {!isExpired ? "Liberar Acesso Vitalício" : "Comprar Pelo Preço Integral"}
+                        {!isExpired ? "Liberar Acesso Vitalício" : "Liberar Acesso a Carteira"}
                     </Button>
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 mb-4 md:mb-5">
@@ -121,7 +121,7 @@ export function FinalCTA() {
                         </div>
                         <div className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
-                            <span className="text-xs sm:text-sm">Suporte Exclusivo</span>
+                            <span className="text-xs sm:text-sm">Alertas Exclusivos</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
