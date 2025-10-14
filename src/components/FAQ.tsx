@@ -43,8 +43,24 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-24 px-4">
-      <div className="container mx-auto max-w-4xl">
+    <section className="py-24 px-4 relative overflow-hidden bg-gradient-to-bl from-indigo-950/30 via-slate-950 to-purple-950/30">
+      {/* Dot matrix texture */}
+      <div className="absolute inset-0 opacity-15">
+        <div 
+          className="absolute inset-0" 
+          style={{
+            backgroundImage: `radial-gradient(circle, rgba(139, 92, 246, 0.3) 1px, transparent 1px)`,
+            backgroundSize: '30px 30px',
+            animation: 'dotPulse 4s ease-in-out infinite'
+          }}
+        />
+      </div>
+      
+      {/* Flowing purple glows */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s' }} />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '7s', animationDelay: '1.5s' }} />
+      <div className="absolute top-1/2 left-1/3 w-72 h-72 bg-violet-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s', animationDelay: '3s' }} />
+      <div className="container mx-auto max-w-4xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

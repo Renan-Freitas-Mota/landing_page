@@ -55,14 +55,14 @@ export function ProductGrid() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}>
-                            <Card className="p-8 glass border-border/50 hover:border-accent/50 transition-all hover:shadow-gold hover:-translate-y-1 h-full">
-                                <div className="flex gap-6 items-start">
-                                    <div className="w-16 h-16 md:w-40 md:h-40 rounded-2xl gradient-gold flex items-center justify-center shadow-gold flex-shrink-0">
-                                        <feature.icon className="w-8 h-8 md:w-20 md:h-20 text-accent-foreground" />
+                            <Card className="p-4 sm:p-8 glass border-border/50 hover:border-accent/50 transition-all hover:shadow-gold hover:-translate-y-1 h-full">
+                                <div className="flex gap-3 sm:gap-6 items-start">
+                                    <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-40 lg:h-40 rounded-2xl gradient-gold flex items-center justify-center shadow-gold flex-shrink-0">
+                                        <feature.icon className="w-6 h-6 sm:w-8 sm:h-8 lg:w-20 lg:h-20 text-accent-foreground" />
                                     </div>
                                     <div className="flex-1">
-                                        <h3 className="text-2xl font-bold mb-1">{feature.title}</h3>
-                                        <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                                        <h3 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">{feature.title}</h3>
+                                        <p className="text-muted-foreground leading-relaxed text-xs sm:text-base">{feature.description}</p>
                                     </div>
                                 </div>
                             </Card>

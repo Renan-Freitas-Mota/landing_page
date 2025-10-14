@@ -21,9 +21,9 @@ const Index = () => {
       <UrgencyManager />
       <InvestmentCalculator />
       <VideoSection />
-      <CryptoCarousel />
+      <CryptoCarousel /> 
       <NewsGrid />
-      <Testimonials />
+      <Testimonials /> 
       <ProductGrid />
       <FinalCTA />
       <About />

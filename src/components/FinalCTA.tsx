@@ -6,11 +6,23 @@ import { motion } from "framer-motion";
 
 export function FinalCTA() {
     return (
-        <section id="final-cta" className="py-24 px-4 relative overflow-hidden">
+        <section id="final-cta" className="py-24 px-4 relative overflow-hidden bg-gradient-to-tr from-amber-950/30 via-slate-950 to-yellow-950/30">
+            {/* Hexagon pattern texture */}
+            <div className="absolute inset-0 opacity-10">
+                <div 
+                    className="absolute inset-0" 
+                    style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='rgba(251,191,36,0.2)' stroke-width='1'/%3E%3C/svg%3E")`,
+                        backgroundSize: '60px 60px'
+                    }}
+                />
+            </div>
+            
             {/* Background decorative elements */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
-                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
+                <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }} />
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-3xl animate-spin" style={{ animationDuration: '20s' }} />
             </div>
 
             <div className="container mx-auto max-w-5xl relative z-10">

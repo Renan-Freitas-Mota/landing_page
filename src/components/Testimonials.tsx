@@ -35,8 +35,28 @@ export function Testimonials() {
     const baseScriptUrl = "https://scripts.converteai.net/e4afbe22-7a6e-4dd8-9576-24f2a422d026/players";
 
     return (
-        <section className="py-12 px-4 bg-card/30">
-            <div className="container mx-auto">
+        <section className="py-12 px-4 relative overflow-hidden bg-gradient-to-b from-emerald-950/40 via-slate-950 to-emerald-950/40">
+            {/* Diagonal stripe texture */}
+            <div className="absolute inset-0 opacity-10">
+                <div 
+                    className="absolute inset-0" 
+                    style={{
+                        backgroundImage: `repeating-linear-gradient(
+                            45deg,
+                            transparent,
+                            transparent 10px,
+                            rgba(16, 185, 129, 0.1) 10px,
+                            rgba(16, 185, 129, 0.1) 20px
+                        )`,
+                        animation: 'diagonalMove 30s linear infinite'
+                    }}
+                />
+            </div>
+            
+            {/* Animated green glows */}
+            <div className="absolute top-10 right-1/4 w-80 h-80 bg-green-500/10 rounded-full blur-3xl animate-bounce" style={{ animationDuration: '8s' }} />
+            <div className="absolute bottom-10 left-1/4 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl animate-bounce" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+            <div className="container mx-auto relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}

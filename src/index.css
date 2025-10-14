@@ -112,4 +112,34 @@
     .shadow-gold {
         box-shadow: var(--shadow-gold);
     }
+
+    /* Custom animations for texturized backgrounds */
+    @keyframes gridMove {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(50px);
+        }
+    }
+
+    @keyframes diagonalMove {
+        0% {
+            transform: translateX(0) translateY(0);
+        }
+        100% {
+            transform: translateX(20px) translateY(20px);
+        }
+    }
+
+    @keyframes dotPulse {
+        0%, 100% {
+            opacity: 0.15;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.25;
+            transform: scale(1.05);
+        }
+    }
 }

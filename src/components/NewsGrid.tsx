@@ -23,8 +23,26 @@ const news = [
 
 export function NewsGrid() {
     return (
-        <section className="py-8 bg-card/30">
-            <div className="w-[95%] mx-auto px-4 md:px-8 lg:px-12">
+        <section className="py-8 relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+            {/* Animated grid texture background */}
+            <div className="absolute inset-0 opacity-20">
+                <div 
+                    className="absolute inset-0" 
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+                        `,
+                        backgroundSize: '50px 50px',
+                        animation: 'gridMove 20s linear infinite'
+                    }}
+                />
+            </div>
+            
+            {/* Floating glow orbs */}
+            <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="w-[95%] mx-auto px-4 md:px-8 lg:px-12 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -66,26 +84,39 @@ export function NewsGrid() {
                             align: "start",
                             loop: true,
                         }}
-                        className="w-full">
-                        <CarouselContent className="-ml-4">
+                        className="w-full overflow-visible">
+                        <CarouselContent className="-ml-4 overflow-visible lg:py-16 lg:px-16 md:py-12 md:px-4">
                             {news.map((item, index) => (
-                                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                                    <Card
-                                        className="overflow-hidden glass border-border/50 hover:border-primary/50 transition-all hover:shadow-glow cursor-pointer"
-                                        onClick={() =>
-                                            window.open(
-                                                "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797",
-                                                "_blank"
-                                            )
-                                        }>
-                                        <div className="aspect-[5/7] w-full overflow-hidden">
-                                            <img
-                                                src={item.image}
-                                                alt={`News ${index + 1}`}
-                                                className="w-full h-full object-cover object-top"
-                                            />
-                                        </div>
-                                    </Card>
+                                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 overflow-visible">
+                                    <motion.div
+                                        whileHover={{ 
+                                            scale: 1.05,
+                                            zIndex: 20,
+                                            transition: { duration: 0.3, ease: "easeOut" }
+                                        }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="h-full relative"
+                                    >
+                                        <Card
+                                            className="overflow-hidden glass border-border/50 hover:border-primary/70 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6),0_0_60px_rgba(59,130,246,0.3)] cursor-pointer group relative"
+                                            onClick={() =>
+                                                window.open(
+                                                    "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797",
+                                                    "_blank"
+                                                )
+                                            }>
+                                            {/* Enhanced glow effect overlay */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10" />
+                                            
+                                            <div className="aspect-[5/7] w-full overflow-hidden">
+                                                <img
+                                                    src={item.image}
+                                                    alt={`News ${index + 1}`}
+                                                    className="w-full h-full object-cover object-top group-hover:brightness-110 transition-all duration-300"
+                                                />
+                                            </div>
+                                        </Card>
+                                    </motion.div>
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
