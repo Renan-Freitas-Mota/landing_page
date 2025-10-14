@@ -132,7 +132,7 @@ const Index = () => {
                 )}
             </InView>
 
-            <InView triggerOnce rootMargin="200px">
+            <InView triggerOnce rootMargin="800px">
                 {({ inView, ref }) => (
                     <div ref={ref}>
                         {inView ? (
