@@ -6,23 +6,34 @@ import { motion } from "framer-motion";
 
 export function FinalCTA() {
     return (
-        <section id="final-cta" className="py-6 px-2 sm:py-8 md:py-12 sm:px-4 relative overflow-hidden bg-gradient-to-tr from-amber-950/30 via-slate-950 to-yellow-950/30">
+        <section
+            id="final-cta"
+            className="py-6 px-2 sm:py-8 md:py-12 sm:px-4 relative overflow-hidden bg-gradient-to-tr from-amber-950/30 via-slate-950 to-yellow-950/30">
             {/* Hexagon pattern texture */}
             <div className="absolute inset-0 opacity-10">
-                <div 
-                    className="absolute inset-0" 
+                <div
+                    className="absolute inset-0"
                     style={{
                         backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='rgba(251,191,36,0.2)' stroke-width='1'/%3E%3C/svg%3E")`,
-                        backgroundSize: '60px 60px'
+                        backgroundSize: "60px 60px",
                     }}
                 />
             </div>
-            
+
             {/* Background decorative elements */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }} />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-3xl animate-spin" style={{ animationDuration: '20s' }} />
+                <div
+                    className="absolute top-0 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse"
+                    style={{ animationDuration: "4s" }}
+                />
+                <div
+                    className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-500/20 rounded-full blur-3xl animate-pulse"
+                    style={{ animationDuration: "5s", animationDelay: "1s" }}
+                />
+                <div
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-3xl animate-spin"
+                    style={{ animationDuration: "20s" }}
+                />
             </div>
 
             <div className="container mx-auto max-w-5xl relative z-10">
@@ -36,7 +47,7 @@ export function FinalCTA() {
                         OFERTA POR TEMPO LIMITADO
                     </Badge>
 
-                    <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black mb-3 md:mb-4 leading-tight px-0 sm:px-2">
+                    <h2 className="text-2xl sm:text-2xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 leading-tight px-0 sm:px-2">
                         Comece a Investir Como os <span className="text-gradient-gold">Grandes Fundos</span> Hoje
                         Mesmo
                     </h2>
@@ -47,13 +58,19 @@ export function FinalCTA() {
 
                     <div className="mb-4 md:mb-5">
                         <div className="flex items-center justify-center gap-2 sm:gap-4 mb-2">
-                            <span className="text-lg sm:text-xl md:text-2xl text-muted-foreground line-through">R$ 497,00</span>
+                            <span className="text-lg sm:text-xl md:text-2xl text-muted-foreground line-through">
+                                R$ 497,00
+                            </span>
                             <Badge className="bg-destructive text-destructive-foreground font-bold px-2 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm">
                                 -94%
                             </Badge>
                         </div>
-                        <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gradient-gold mb-2">R$ 29,90</p>
-                        <p className="text-xs sm:text-sm text-muted-foreground">Pagamento único • Acesso para sempre</p>
+                        <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gradient-gold mb-2">
+                            R$ 29,90
+                        </p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">
+                            Pagamento único • Acesso para sempre
+                        </p>
                     </div>
 
                     <div className="flex justify-center mb-4 md:mb-5">
@@ -91,7 +108,9 @@ export function FinalCTA() {
                         <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-secondary flex-shrink-0" />
                         <div className="text-left">
                             <p className="font-bold text-xs sm:text-sm">Garantia de 7 Dias</p>
-                            <p className="text-[10px] sm:text-xs text-muted-foreground">100% do seu dinheiro de volta</p>
+                            <p className="text-[10px] sm:text-xs text-muted-foreground">
+                                100% do seu dinheiro de volta
+                            </p>
                         </div>
                     </div>
                 </motion.div>

@@ -134,7 +134,7 @@ export function HeroChart({ isMobile }: { isMobile: boolean }) {
             className="px-2 sm:px-4 lg:px-0 h-[60vh] sm:h-[55vh] lg:h-[65vh] overflow-hidden"
         >
             <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 text-center lg:text-left break-words">
-                Rendimento em 12 meses: Carteira dos Tubarões VS Ibovespa, Tesouro Selic
+                Rendimento em 12 meses: Carteira dos Tubarões VS Ibovespa e Tesouro Selic
             </h2>
             <div className="glass rounded-2xl p-2 sm:p-3 lg:p-4 h-full flex flex-col overflow-hidden">
                 <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 break-words">

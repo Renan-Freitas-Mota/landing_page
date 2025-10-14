@@ -188,17 +188,9 @@ const Index = () => {
                 )}
             </InView>
 
-            <InView triggerOnce rootMargin="0px">
-                {({ inView, ref }) => (
-                    <div ref={ref}>
-                        {inView ? (
-                            <Suspense fallback={null}>
-                                <LazyFloatingCTA />
-                            </Suspense>
-                        ) : null}
-                    </div>
-                )}
-            </InView>
+            <Suspense fallback={null}>
+                <LazyFloatingCTA />
+            </Suspense>
         </div>
     );
 };

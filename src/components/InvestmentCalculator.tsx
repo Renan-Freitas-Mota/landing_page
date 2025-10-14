@@ -28,22 +28,24 @@ export function InvestmentCalculator() {
                     <div className="flex flex-col gap-3">
                         {/* Texto e Input */}
                         <div className="flex flex-wrap items-center justify-center gap-2 text-base sm:text-lg font-semibold p-4">
-                            <span className="text-foreground mb-4">Se você tivesse investido</span>
+                            <label htmlFor="investment-input" className="text-foreground mb-4">Se você tivesse investido</label>
                             <div className="relative group">
-                                <span className="absolute -top-5 left-2 text-xs text-[#f59e0b] transition-opacity">
+                                <span className="absolute -top-5 left-2 text-xs text-[#f59e0b] transition-opacity" aria-hidden="true">
                                     ✎ Altere o valor
                                 </span>
                                 <div className="relative flex items-center">
-                                    <span className="absolute left-2.5 text-foreground/70 text-sm font-medium">
+                                    <span className="absolute left-2.5 text-foreground/70 text-sm font-medium" aria-hidden="true">
                                         R$
                                     </span>
                                     <input
+                                        id="investment-input"
                                         type="number"
                                         value={investmentValue}
                                         onChange={handleInvestmentChange}
                                         className="w-28 sm:w-32 px-2 pl-9 py-1.5 bg-background/50 border-2 border-[#f59e0b] rounded-lg text-center font-bold text-[#f59e0b] focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent transition-all hover:bg-background/70 hover:scale-105"
                                         min="0"
                                         step="100"
+                                        aria-label="Valor do investimento em reais"
                                     />
                                 </div>
                             </div>

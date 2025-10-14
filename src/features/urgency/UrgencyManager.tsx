@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-
 import { useCountdownContext } from "@/context/CountdownContext";
+import { COUNTDOWN_DURATION } from "@/hooks/useCountdown";
 import {
     Dialog,
     DialogContent,
@@ -10,8 +10,8 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
+// Replaced toast warnings with lightweight Dialogs
 
 const CHECKOUT_URL = "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797";
 const WAITLIST_MAIL =
@@ -23,48 +23,63 @@ export function UrgencyManager() {
     const { totalSeconds, isExpired, resetCountdown, canReopen } = useCountdownContext();
 
     const prevSecondsRef = useRef<number>(totalSeconds);
-    const [showLastChance, setShowLastChance] = useState(false);
-    const [lastChanceDismissed, setLastChanceDismissed] = useState(false);
+    const toastShownRef = useRef({
+        firstWarning: false,
+        secondWarning: false,
+        lastChance: false,
+    });
+    const [firstWarningOpen, setFirstWarningOpen] = useState(false);
+    const [secondWarningOpen, setSecondWarningOpen] = useState(false);
+    const [lastChanceOpen, setLastChanceOpen] = useState(false);
     const [offerClosedOpen, setOfferClosedOpen] = useState(false);
 
-    // Run micro psychological triggers
+    // Pre-compute dynamic thresholds based on total countdown duration
+    const durationSeconds = Math.floor(COUNTDOWN_DURATION / 1000);
+    const thresholdTwoThirds = Math.floor((2 / 3) * durationSeconds); // was 600s for 15 min
+    const thresholdOneThird = Math.floor((1 / 3) * durationSeconds); // was 300s for 15 min
+    const thresholdOneFifth = Math.floor((1 / 5) * durationSeconds); // was 180s for 15 min
+
+    // Trigger dialogs at key thresholds
     useEffect(() => {
         const prev = prevSecondsRef.current;
 
-        if (prev > 600 && totalSeconds <= 600 && totalSeconds > 0) {
-            toast({
-                title: "⚡ 12 pessoas acabaram de entrar",
-                description: "Nos últimos 10 minutos, 12 investidores garantiram acesso à Carteira dos Tubarões.",
-                duration: 8000,
-            });
+        if (
+            prev > thresholdTwoThirds &&
+            totalSeconds <= thresholdTwoThirds &&
+            totalSeconds > 0 &&
+            !toastShownRef.current.firstWarning
+        ) {
+            toastShownRef.current.firstWarning = true;
+            setFirstWarningOpen(true);
         }
 
-        if (prev > 300 && totalSeconds <= 300 && totalSeconds > 0) {
-            toast({
-                title: "🔥 Última chamada",
-                description: "Restam apenas alguns minutos para travar o preço especial de lançamento.",
-                duration: 9000,
-            });
+        if (
+            prev > thresholdOneThird &&
+            totalSeconds <= thresholdOneThird &&
+            totalSeconds > 0 &&
+            !toastShownRef.current.secondWarning
+        ) {
+            toastShownRef.current.secondWarning = true;
+            setSecondWarningOpen(true);
         }
 
         prevSecondsRef.current = totalSeconds;
-    }, [totalSeconds]);
+    }, [totalSeconds, thresholdTwoThirds, thresholdOneThird]);
 
-    // Reset dismiss flag when timer returns to a comfortable zone (> 5 minutes)
+    // Reset toast flags when timer returns to a comfortable zone
     useEffect(() => {
-        if (totalSeconds > 300) {
-            setLastChanceDismissed(false);
+        if (totalSeconds > thresholdOneThird) {
+            toastShownRef.current.lastChance = false;
         }
-    }, [totalSeconds]);
+    }, [totalSeconds, thresholdOneThird]);
 
-    // Trigger last chance pop-up in the final 3 minutes
+    // Trigger last chance dialog in the final one-fifth of the duration
     useEffect(() => {
-        if (totalSeconds > 0 && totalSeconds <= 180 && !lastChanceDismissed) {
-            setShowLastChance(true);
-        } else if (totalSeconds > 180 && showLastChance) {
-            setShowLastChance(false);
+        if (totalSeconds > 0 && totalSeconds <= thresholdOneFifth && !toastShownRef.current.lastChance) {
+            toastShownRef.current.lastChance = true;
+            setLastChanceOpen(true);
         }
-    }, [totalSeconds, lastChanceDismissed, showLastChance]);
+    }, [totalSeconds, thresholdOneFifth]);
 
     // Lock the page when the offer expires
     useEffect(() => {
@@ -87,98 +102,135 @@ export function UrgencyManager() {
         window.open(NOTIFY_MAIL, "_blank");
     };
 
-    const handleLastChanceClose = () => {
-        setShowLastChance(false);
-        setLastChanceDismissed(true);
-    };
-
     const handleReopen = () => {
         resetCountdown();
     };
 
     return (
         <>
-            <Dialog open={showLastChance} onOpenChange={(open) => (!open ? handleLastChanceClose() : null)}>
-                <DialogContent className="max-w-md border-2 border-red-500/40 bg-background/95 backdrop-blur-lg">
+            {/* Non-blocking, transparent-overlay dialogs for time warnings */}
+            <Dialog open={firstWarningOpen} onOpenChange={setFirstWarningOpen} modal={false}>
+                <DialogContent
+                    overlayClassName="bg-transparent pointer-events-none"
+                    className={cn(
+                        "top-4 left-1/2 translate-x-[-50%] translate-y-0 max-w-sm w-[92vw] sm:w-[28rem]",
+                        "border-2 border-blue-500/40 bg-background/95 backdrop-blur-xl p-4 shadow-lg",
+                        "data-[state=open]:animate-in data-[state=closed]:animate-out"
+                    )}>
                     <DialogHeader>
-                        <DialogTitle className="text-2xl font-black text-red-500 flex items-center gap-2">
-                            <span aria-hidden>🚨</span> Última chance!
-                        </DialogTitle>
-                        <DialogDescription className="text-base text-foreground">
-                            O acesso à Carteira dos Tubarões pode ser encerrado a qualquer momento. Garanta sua
-                            vaga agora.
+                        <DialogTitle className="text-base font-extrabold">⚡ Atenção ao tempo!</DialogTitle>
+                        <DialogDescription className="text-sm">
+                            Se o cronômetro zerar, você perderá o preço promocional e terá que pagar o valor cheio
+                            do produto.
                         </DialogDescription>
                     </DialogHeader>
-                    <DialogFooter className="flex-row gap-3 sm:justify-between">
-                        <Button variant="outline" onClick={handleLastChanceClose} className="flex-1">
-                            Pensar depois
+                    <div className="flex gap-2 flex-wrap">
+                        <Button size="sm" className="font-semibold" onClick={handleCheckout}>
+                            Garantir preço promocional
                         </Button>
-                        <Button
-                            onClick={handleCheckout}
-                            className="flex-1 gradient-gold text-accent-foreground font-bold">
-                            Garantir meu acesso agora
+                        <Button size="sm" variant="outline" onClick={() => setFirstWarningOpen(false)}>
+                            Continuar vendo
                         </Button>
-                    </DialogFooter>
+                    </div>
                 </DialogContent>
             </Dialog>
 
+            <Dialog open={secondWarningOpen} onOpenChange={setSecondWarningOpen} modal={false}>
+                <DialogContent
+                    overlayClassName="bg-transparent pointer-events-none"
+                    className={cn(
+                        "top-4 left-1/2 translate-x-[-50%] translate-y-0 max-w-sm w-[92vw] sm:w-[28rem]",
+                        "border-2 border-orange-500/40 bg-background/95 backdrop-blur-xl p-4 shadow-lg",
+                        "data-[state=open]:animate-in data-[state=closed]:animate-out"
+                    )}>
+                    <DialogHeader>
+                        <DialogTitle className="text-base font-extrabold">🔥 O tempo está acabando!</DialogTitle>
+                        <DialogDescription className="text-sm">
+                            Quando o cronômetro chegar a ZERO, o desconto será REMOVIDO e você terá que pagar o
+                            preço INTEGRAL. Não deixe essa oportunidade escapar!
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="flex gap-2 flex-wrap">
+                        <Button size="sm" className="font-semibold" onClick={handleCheckout}>
+                            Garantir desconto agora
+                        </Button>
+                        <Button size="sm" variant="outline" onClick={() => setSecondWarningOpen(false)}>
+                            Pensar depois
+                        </Button>
+                    </div>
+                </DialogContent>
+            </Dialog>
+
+            <Dialog open={lastChanceOpen} onOpenChange={setLastChanceOpen} modal={false}>
+                <DialogContent
+                    overlayClassName="bg-transparent pointer-events-none"
+                    className={cn(
+                        "top-4 left-1/2 translate-x-[-50%] translate-y-0 max-w-sm w-[92vw] sm:w-[28rem]",
+                        "border-2 border-red-500/40 bg-background/95 backdrop-blur-xl p-4 shadow-lg",
+                        "data-[state=open]:animate-in data-[state=closed]:animate-out"
+                    )}>
+                    <DialogHeader>
+                        <DialogTitle className="text-base font-extrabold">🚨 CORRA! Últimos segundos!</DialogTitle>
+                        <DialogDescription className="text-sm">
+                            AGORA OU NUNCA! Garanta o acesso pelo preço promocional antes que seja tarde demais. O
+                            cronômetro está quase zerando!
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="flex gap-2 flex-wrap">
+                        <Button size="sm" className="font-semibold" onClick={handleCheckout}>
+                            GARANTIR AGORA!
+                        </Button>
+                        <Button size="sm" variant="outline" onClick={() => setLastChanceOpen(false)}>
+                            Pensar depois
+                        </Button>
+                    </div>
+                </DialogContent>
+            </Dialog>
+            {/* Offer Expired Modal */}
             <Dialog
                 open={offerClosedOpen}
                 onOpenChange={(open) => {
-                    if (!open && canReopen) {
+                    if (!open) {
                         setOfferClosedOpen(false);
-                    } else if (open) {
-                        setOfferClosedOpen(true);
                     }
                 }}>
                 <DialogContent
                     className={cn(
-                        "max-w-lg border-2 border-muted/40 bg-background/95 backdrop-blur-xl",
-                        "data-[state=open]:animate-in data-[state=closed]:animate-out"
+                        "max-w-[95vw] sm:max-w-lg border-2 border-red-500/40 bg-background/95 backdrop-blur-xl",
+                        "data-[state=open]:animate-in data-[state=closed]:animate-out",
+                        "mx-4"
                     )}>
                     <DialogHeader>
-                        <DialogTitle className="text-3xl font-black text-center text-muted-foreground">
-                            {canReopen ? "Oferta reaberta por tempo limitado" : "Oferta encerrada"}
+                        <DialogTitle className="text-2xl sm:text-3xl font-black text-center text-red-500">
+                            ⏰ ÚLTIMA CHANCE!
                         </DialogTitle>
-                        <DialogDescription className="text-center text-base text-muted-foreground">
-                            {canReopen
-                                ? "Você ganhou uma nova janela exclusiva para liberar o acesso agora. Não perca a segunda chance!"
-                                : "As vagas para a Carteira dos Tubarões foram preenchidas. Aproveite para entrar na lista prioritária."}
+                        <DialogDescription className="text-center text-sm sm:text-base text-foreground font-semibold">
+                            O tempo acabou, mas você ainda pode garantir o preço promocional AGORA! Após fechar
+                            essa tela, o preço volta ao normal e você perderá o desconto.
                         </DialogDescription>
                     </DialogHeader>
                     <div className="space-y-3">
-                        {canReopen ? (
-                            <Button
-                                size="lg"
-                                className="w-full gradient-gold text-accent-foreground font-bold"
-                                onClick={() => {
-                                    handleReopen();
-                                    setOfferClosedOpen(false);
-                                    handleCheckout();
-                                }}>
-                                Liberar minha nova chance agora
-                            </Button>
-                        ) : (
-                            <>
-                                <Button size="lg" className="w-full font-bold" onClick={handleWaitlist}>
-                                    Entrar na lista de espera
-                                </Button>
-                                <Button size="lg" variant="outline" className="w-full" onClick={handleNotify}>
-                                    Receber notificação quando reabrir
-                                </Button>
-                            </>
-                        )}
+                        <Button
+                            size="lg"
+                            className="w-full gradient-gold text-accent-foreground font-bold text-sm sm:text-base px-3 py-2 h-auto min-h-[44px]"
+                            onClick={() => {
+                                setOfferClosedOpen(false);
+                                handleCheckout();
+                            }}>
+                            <span className="text-center leading-tight">COMPRAR AGORA COM DESCONTO</span>
+                        </Button>
+                        <Button
+                            size="lg"
+                            variant="outline"
+                            className="w-full text-sm sm:text-base"
+                            onClick={() => setOfferClosedOpen(false)}>
+                            FECHAR e perder o desconto
+                        </Button>
                     </div>
                     <DialogFooter>
-                        {canReopen ? (
-                            <p className="text-xs text-center text-muted-foreground w-full">
-                                Ao confirmar, o cronômetro reinicia e você volta direto para a oferta especial.
-                            </p>
-                        ) : (
-                            <p className="text-xs text-center text-muted-foreground w-full">
-                                Continuaremos monitorando novas vagas e avisaremos você antes de todo mundo.
-                            </p>
-                        )}
+                        <p className="text-xs text-center text-muted-foreground w-full">
+                            ⚠️ Esta é sua última oportunidade de garantir o desconto. Não deixe passar!
+                        </p>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
