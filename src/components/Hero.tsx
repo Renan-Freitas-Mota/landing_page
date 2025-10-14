@@ -1,20 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp } from "lucide-react";
-import {
-    AreaChart,
-    Area,
-    XAxis,
-    YAxis,
-    ResponsiveContainer,
-    Tooltip,
-    CartesianGrid,
-    Legend,
-    Label,
-    LabelList,
-} from "recharts";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
+import { InView } from "react-intersection-observer";
+const LazyHeroChart = lazy(() => import("./HeroChart").then((m) => ({ default: m.HeroChart })));
 
 const chartData = [
     // Mês 1
@@ -249,205 +239,20 @@ export function Hero() {
                         </motion.div>
                     </motion.div>
 
-                    {/* Right Column - Chart */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3, duration: 0.8 }}
-                        className="px-2 sm:px-4 lg:px-0 h-[60vh] sm:h-[55vh] lg:h-[65vh] overflow-hidden">
-                        <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 text-center lg:text-left break-words">
-                            Rendimento em 12 meses: Carteira dos Tubarões VS Ibovespa, Tesouro Selic
-                        </h2>
-                        <div className="glass rounded-2xl p-2 sm:p-3 lg:p-4 h-full flex flex-col overflow-hidden">
-                            <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 break-words">
-                                Comparativo de Rentabilidade - Últimos 12 Meses
-                            </h3>
-
-                            {/* Legendas */}
-                            <div className="flex flex-wrap gap-3 lg:gap-4 mb-4 justify-center lg:justify-start">
-                                <div className="flex items-center gap-2">
-                                    <div
-                                        className="w-3 h-3 rounded-sm"
-                                        style={{ backgroundColor: "#f59e0b" }}></div>
-                                    <span className="text-xs lg:text-sm font-medium">Carteira dos Tubarões</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <div
-                                        className="w-3 h-3 rounded-sm"
-                                        style={{ backgroundColor: "#a78bfa" }}></div>
-                                    <span className="text-xs lg:text-sm font-medium">Tesouro Selic</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <div
-                                        className="w-3 h-3 rounded-sm"
-                                        style={{ backgroundColor: "#ef4444" }}></div>
-                                    <span className="text-xs lg:text-sm font-medium">Ibovespa</span>
-                                </div>
+                    {/* Right Column - Chart (lazy) */}
+                    <InView triggerOnce rootMargin="400px">
+                        {({ inView, ref }) => (
+                            <div ref={ref} className="px-2 sm:px-4 lg:px-0 h-[60vh] sm:h-[55vh] lg:h-[65vh] overflow-hidden">
+                                {inView ? (
+                                    <Suspense fallback={<div className="glass rounded-2xl h-full w-full animate-pulse bg-muted/20" />}> 
+                                        <LazyHeroChart isMobile={isMobile} />
+                                    </Suspense>
+                                ) : (
+                                    <div className="glass rounded-2xl h-full w-full animate-pulse bg-muted/10" />
+                                )}
                             </div>
-
-                            <div className="flex-1 min-h-0">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <AreaChart
-                                        data={chartData}
-                                        margin={{ top: 10, right: 50, left: -10, bottom: 30 }}>
-                                        <defs>
-                                            <linearGradient id="colorSelic" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="5%" stopColor="#a78bfa" stopOpacity={0.8} />
-                                                <stop offset="95%" stopColor="#a78bfa" stopOpacity={0.1} />
-                                            </linearGradient>
-                                            <linearGradient id="colorIbov" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8} />
-                                                <stop offset="95%" stopColor="#ef4444" stopOpacity={0.1} />
-                                            </linearGradient>
-                                            <linearGradient id="colorSharks" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.9} />
-                                                <stop offset="95%" stopColor="#f59e0b" stopOpacity={0.2} />
-                                            </linearGradient>
-                                        </defs>
-                                        <CartesianGrid
-                                            strokeDasharray="3 3"
-                                            stroke="hsl(var(--muted-foreground)/0.15)"
-                                            vertical={false}
-                                        />
-                                        <XAxis
-                                            dataKey="month"
-                                            stroke="hsl(var(--muted-foreground)/0.5)"
-                                            tick={{ fill: "hsl(var(--muted-foreground))" }}
-                                            axisLine={false}
-                                            tickLine={false}
-                                            ticks={[
-                                                "1.0",
-                                                "2.0",
-                                                "3.0",
-                                                "4.0",
-                                                "5.0",
-                                                "6.0",
-                                                "7.0",
-                                                "8.0",
-                                                "9.0",
-                                                "10.0",
-                                                "11.0",
-                                                "12.0",
-                                            ]}
-                                            tickFormatter={(value) => value.split(".")[0]}
-                                            style={{ fontSize: "12px" }}>
-                                            <Label value="Meses" offset={-10} position="insideBottom" />
-                                        </XAxis>
-                                        <YAxis
-                                            domain={[0, 450]}
-                                            ticks={[0, 150, 300, 450]}
-                                            tickFormatter={(v) => `${v}%`}
-                                            stroke="hsl(var(--muted-foreground)/0.5)"
-                                            tick={{ fill: "hsl(var(--muted-foreground))" }}
-                                            axisLine={false}
-                                            tickLine={false}
-                                            style={{ fontSize: "11px" }}
-                                        />
-                                        <Tooltip
-                                            formatter={(value) => `${value as number}%`}
-                                            labelFormatter={(label) => `Mês ${label.split(".")[0]}`}
-                                            contentStyle={{
-                                                backgroundColor: "hsl(var(--background))",
-                                                border: "1px solid hsl(var(--border))",
-                                                borderRadius: isMobile ? "6px" : "8px",
-                                                fontSize: isMobile ? "12px" : undefined,
-                                                padding: isMobile ? "4px 8px" : undefined,
-                                            }}
-                                            allowEscapeViewBox={
-                                                isMobile ? { x: true, y: true } : { x: false, y: false }
-                                            }
-                                            wrapperStyle={{ outline: "none", zIndex: isMobile ? 100 : undefined }}
-                                            position={isMobile ? { y: -100 } : undefined}
-                                            offset={isMobile ? -100 : undefined}
-                                        />
-                                        {/* Tesouro Selic - 15% (roxo/lilás) */}
-                                        <Area
-                                            name="Tesouro Selic - 15%"
-                                            type="monotone"
-                                            dataKey="selic"
-                                            stroke="#a78bfa"
-                                            strokeWidth={1}
-                                            fill="url(#colorSelic)"
-                                            fillOpacity={1}
-                                            dot={false}>
-                                            <LabelList
-                                                dataKey="selic"
-                                                content={({ index, x, y }) =>
-                                                    index === chartData.length - 1 ? (
-                                                        <text
-                                                            x={(x as number) + 4}
-                                                            y={(y as number) + 0}
-                                                            fill="#a78bfa"
-                                                            fontSize={11}
-                                                            fontWeight={600}>
-                                                            15%
-                                                        </text>
-                                                    ) : null
-                                                }
-                                            />
-                                        </Area>
-
-                                        {/* Ibovespa - 8% (vermelho) */}
-                                        <Area
-                                            name="Ibovespa - 8%"
-                                            type="monotone"
-                                            dataKey="ibov"
-                                            stroke="#ef4444"
-                                            strokeWidth={1}
-                                            fill="url(#colorIbov)"
-                                            fillOpacity={1}
-                                            dot={false}>
-                                            <LabelList
-                                                dataKey="ibov"
-                                                content={({ index, x, y }) =>
-                                                    index === chartData.length - 1 ? (
-                                                        <text
-                                                            x={(x as number) + 4}
-                                                            y={(y as number) + 8}
-                                                            fill="#ef4444"
-                                                            fontSize={11}
-                                                            fontWeight={600}>
-                                                            8%
-                                                        </text>
-                                                    ) : null
-                                                }
-                                            />
-                                        </Area>
-
-                                        {/* Carteira dos Tubarões - 437% (laranja/dourado) */}
-                                        <Area
-                                            name="Carteira dos Tubarões - 437%"
-                                            type="monotone"
-                                            dataKey="sharks"
-                                            stroke="#f59e0b"
-                                            strokeWidth={1.5}
-                                            fill="url(#colorSharks)"
-                                            fillOpacity={1}
-                                            dot={false}>
-                                            <LabelList
-                                                dataKey="sharks"
-                                                content={({ index, x, y }) =>
-                                                    index === chartData.length - 1 ? (
-                                                        <text
-                                                            x={(x as number) + 4}
-                                                            y={(y as number) - 6}
-                                                            fill="#f59e0b"
-                                                            fontSize={12}
-                                                            fontWeight={800}>
-                                                            437%
-                                                        </text>
-                                                    ) : null
-                                                }
-                                            />
-                                        </Area>
-                                    </AreaChart>
-                                </ResponsiveContainer>
-                            </div>
-                            <div className="text-xs text-muted-foreground mt-3 text-right flex-shrink-0">
-                                Fonte: Infomoney e Tesouro Selic
-                            </div>
-                        </div>
-                    </motion.div>
+                        )}
+                    </InView>
                 </div>
             </div>
         </section>

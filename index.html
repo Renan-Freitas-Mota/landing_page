@@ -6,15 +6,19 @@
                 i._plt = i._plt || (n && n.timeOrigin ? n.timeOrigin + n.now() : Date.now())
             }(window, performance);
         </script>
+        <link rel="preconnect" href="https://cdn.converteai.net" crossorigin>
+        <link rel="preconnect" href="https://scripts.converteai.net" crossorigin>
         <link rel="preload"
-              href="https://scripts.converteai.net/e4afbe22-7a6e-4dd8-9576-24f2a422d026/players/68e3f767905b162885c122f8/v4/player.js"
+              href="https://scripts.converteai.net/e4afbe22-7a6e-4dd8-9576-24f2a422d026/players/68ed80f9a5c41524a5302727/v4/player.js"
               as="script">
         <link rel="preload"
               href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js"
               as="script">
         <link rel="preload"
-              href="https://cdn.converteai.net/e4afbe22-7a6e-4dd8-9576-24f2a422d026/68e3f7631c46b5bdaf699296/main.m3u8"
-              as="fetch">
+              href="https://cdn.converteai.net/e4afbe22-7a6e-4dd8-9576-24f2a422d026/68ed80eea5c41524a5302718/main.m3u8"
+              as="fetch"
+              type="application/vnd.apple.mpegurl"
+              crossorigin="anonymous">
         <link rel="dns-prefetch" href="https://cdn.converteai.net">
         <link rel="dns-prefetch" href="https://scripts.converteai.net">
         <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -43,8 +47,17 @@
         <link rel="shortcut icon" href="/favicon_io/favicon.ico">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-              rel="stylesheet">
+        <link rel="preload"
+              as="style"
+              href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+              media="print"
+              onload="this.media='all'">
+        <noscript>
+            <link rel="stylesheet"
+                  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+        </noscript>
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://carteiradostubaroes.com" />
