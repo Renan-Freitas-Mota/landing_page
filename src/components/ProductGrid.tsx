@@ -19,7 +19,7 @@ const features = [
         icon: Video,
         title: "Vídeo Aulas Práticas",
         description:
-            "Aprenda do zero com videoaulas passo a passo. Desde a criação da conta até estratégias avançadas de compra e venda.",
+            "Vídeoaulas práticas para aprender a usar a corretora e colocar suas operações em prática.",
     },
     {
         icon: Bell,
@@ -61,8 +61,12 @@ export function ProductGrid() {
                                         <feature.icon className="w-6 h-6 sm:w-8 sm:h-8 lg:w-20 lg:h-20 text-accent-foreground" />
                                     </div>
                                     <div className="flex-1">
-                                        <h3 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">{feature.title}</h3>
-                                        <p className="text-muted-foreground leading-relaxed text-xs sm:text-base">{feature.description}</p>
+                                        <h3 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">
+                                            {feature.title}
+                                        </h3>
+                                        <p className="text-muted-foreground leading-relaxed text-xs sm:text-base">
+                                            {feature.description}
+                                        </p>
                                     </div>
                                 </div>
                             </Card>

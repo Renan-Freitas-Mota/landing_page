@@ -230,10 +230,10 @@ export function Hero() {
                             </Button>
 
                             <p className="text-sm text-muted-foreground text-center lg:text-right">
+                                <span className="text-green-500">✓</span> Vídeo Aulas Exclusivas{"  "}
+                                <span className="text-green-500">✓</span> Acesso Imediato ao Grupo VIP{"  "}
                                 <span className="text-green-500">✓</span> Movimentação Real de Baleias{" "}
                                 <span className="text-green-500">✓</span> Monitoramento Diário{" "}
-                                <span className="text-green-500">✓</span> Acesso Imediato ao Grupo VIP{"  "}
-                                <span className="text-green-500">✓</span> Vídeo Aulas Exclusivas{"  "}
                                 <span className="text-green-500">✓</span> Garantia de 7 Dias{"  "}
                             </p>
                         </motion.div>

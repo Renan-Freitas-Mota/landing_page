@@ -3,8 +3,11 @@ import { Badge } from "@/components/ui/badge";
 import { CountdownTimer } from "./CountdownTimer";
 import { CheckCircle, Shield } from "lucide-react";
 import { motion } from "framer-motion";
+import { useCountdownContext } from "@/context/CountdownContext";
 
 export function FinalCTA() {
+    const { isExpired } = useCountdownContext();
+    
     return (
         <section
             id="final-cta"
@@ -43,9 +46,15 @@ export function FinalCTA() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                     className="glass rounded-2xl md:rounded-3xl p-3 sm:p-6 md:p-10 text-center border-2 border-accent/30 shadow-gold">
-                    <Badge className="mb-3 md:mb-4 px-3 sm:px-4 md:px-6 py-1.5 md:py-2 gradient-gold text-accent-foreground font-bold text-xs md:text-sm">
-                        OFERTA POR TEMPO LIMITADO
-                    </Badge>
+                    {!isExpired ? (
+                        <Badge className="mb-3 md:mb-4 px-3 sm:px-4 md:px-6 py-1.5 md:py-2 gradient-gold text-accent-foreground font-bold text-xs md:text-sm">
+                            OFERTA POR TEMPO LIMITADO
+                        </Badge>
+                    ) : (
+                        <Badge className="mb-3 md:mb-4 px-3 sm:px-4 md:px-6 py-1.5 md:py-2 bg-muted text-muted-foreground font-bold text-xs md:text-sm">
+                            OFERTA EXPIRADA
+                        </Badge>
+                    )}
 
                     <h2 className="text-2xl sm:text-2xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 leading-tight px-0 sm:px-2">
                         Comece a Investir Como os <span className="text-gradient-gold">Grandes Fundos</span> Hoje
@@ -53,29 +62,41 @@ export function FinalCTA() {
                     </h2>
 
                     <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 md:mb-5 max-w-2xl mx-auto px-0 sm:px-2">
-                        Acesso vitalício à carteira secreta dos tubarões por apenas:
+                        {!isExpired 
+                            ? "Acesso vitalício à carteira secreta dos tubarões por apenas:"
+                            : "Acesso vitalício à carteira secreta dos tubarões:"}
                     </p>
 
                     <div className="mb-4 md:mb-5">
-                        <div className="flex items-center justify-center gap-2 sm:gap-4 mb-2">
-                            <span className="text-lg sm:text-xl md:text-2xl text-muted-foreground line-through">
+                        {!isExpired ? (
+                            <>
+                                <div className="flex items-center justify-center gap-2 sm:gap-4 mb-2">
+                                    <span className="text-lg sm:text-xl md:text-2xl text-muted-foreground line-through">
+                                        R$ 497,00
+                                    </span>
+                                    <Badge className="bg-destructive text-destructive-foreground font-bold px-2 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm">
+                                        -94%
+                                    </Badge>
+                                </div>
+                                <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gradient-gold mb-2">
+                                    R$ 29,90
+                                </p>
+                            </>
+                        ) : (
+                            <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-2">
                                 R$ 497,00
-                            </span>
-                            <Badge className="bg-destructive text-destructive-foreground font-bold px-2 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm">
-                                -94%
-                            </Badge>
-                        </div>
-                        <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gradient-gold mb-2">
-                            R$ 29,90
-                        </p>
+                            </p>
+                        )}
                         <p className="text-xs sm:text-sm text-muted-foreground">
                             Pagamento único • Acesso para sempre
                         </p>
                     </div>
 
-                    <div className="flex justify-center mb-4 md:mb-5">
-                        <CountdownTimer />
-                    </div>
+                    {!isExpired && (
+                        <div className="flex justify-center mb-4 md:mb-5">
+                            <CountdownTimer />
+                        </div>
+                    )}
 
                     <Button
                         size="lg"
@@ -85,8 +106,12 @@ export function FinalCTA() {
                                 "_blank"
                             )
                         }
-                        className="w-full sm:w-auto gradient-gold text-accent-foreground font-bold text-base sm:text-lg md:text-xl px-6 sm:px-10 md:px-16 py-3 sm:py-4 md:py-5 shadow-gold hover:scale-105 transition-transform mb-4 md:mb-5">
-                        Liberar Acesso Vitalício
+                        className={`w-full sm:w-auto font-bold text-base sm:text-lg md:text-xl px-6 sm:px-10 md:px-16 py-3 sm:py-4 md:py-5 hover:scale-105 transition-transform mb-4 md:mb-5 ${
+                            !isExpired 
+                                ? "gradient-gold text-accent-foreground shadow-gold" 
+                                : "bg-primary text-primary-foreground"
+                        }`}>
+                        {!isExpired ? "Liberar Acesso Vitalício" : "Comprar Pelo Preço Integral"}
                     </Button>
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 mb-4 md:mb-5">

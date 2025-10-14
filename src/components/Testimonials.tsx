@@ -38,8 +38,8 @@ export function Testimonials() {
         <section className="py-12 px-4 relative overflow-hidden bg-gradient-to-b from-emerald-950/40 via-slate-950 to-emerald-950/40">
             {/* Diagonal stripe texture */}
             <div className="absolute inset-0 opacity-10">
-                <div 
-                    className="absolute inset-0" 
+                <div
+                    className="absolute inset-0"
                     style={{
                         backgroundImage: `repeating-linear-gradient(
                             45deg,
@@ -48,14 +48,20 @@ export function Testimonials() {
                             rgba(16, 185, 129, 0.1) 10px,
                             rgba(16, 185, 129, 0.1) 20px
                         )`,
-                        animation: 'diagonalMove 30s linear infinite'
+                        animation: "diagonalMove 30s linear infinite",
                     }}
                 />
             </div>
-            
+
             {/* Animated green glows */}
-            <div className="absolute top-10 right-1/4 w-80 h-80 bg-green-500/10 rounded-full blur-3xl animate-bounce" style={{ animationDuration: '8s' }} />
-            <div className="absolute bottom-10 left-1/4 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl animate-bounce" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+            <div
+                className="absolute top-10 right-1/4 w-80 h-80 bg-green-500/10 rounded-full blur-3xl animate-bounce"
+                style={{ animationDuration: "8s" }}
+            />
+            <div
+                className="absolute bottom-10 left-1/4 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl animate-bounce"
+                style={{ animationDuration: "10s", animationDelay: "2s" }}
+            />
             <div className="container mx-auto relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -69,15 +75,23 @@ export function Testimonials() {
                     <h2 className="text-4xl md:text-5xl font-black mb-4">
                         Resultados de quem já está <span className="text-gradient-gold">Lucrando</span>
                     </h2>
-                    <p className="text-lg text-muted-foreground flex items-center justify-center gap-2">
-                        Arraste para ver mais 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                            <path d="m9 18 6-6-6-6"/>
-                        </svg>
-                    </p>
-
                 </motion.div>
-
+                <p className="text-lg text-muted-foreground flex items-center justify-center gap-2">
+                    Arraste para ver mais
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-white">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                </p>
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
