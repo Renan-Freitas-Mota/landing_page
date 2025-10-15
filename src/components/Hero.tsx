@@ -198,7 +198,7 @@ export function Hero() {
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                             </span>
                             <span className="text-accent text-xs sm:text-sm font-semibold whitespace-nowrap">
-                                ACESSO LIMITADO • ÚLTIMAS VAGAS
+                                ACESSO LIMITADO • ÚLTIMAS VAGAS!
                             </span>
                         </motion.div>
                         <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-6 break-words">
