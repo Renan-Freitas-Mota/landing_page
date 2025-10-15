@@ -165,14 +165,14 @@ export function Hero() {
     };
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-8 sm:pt-16 md:pt-24 pb-12 overflow-x-hidden">
+        <section className="relative min-h-screen flex items-center justify-center py-24 overflow-x-hidden">
             {/* Background decorative elements */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-20 right-10 w-72 h-72 bg-green-500/20 rounded-full blur-3xl" />
                 <div className="absolute bottom-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
             </div>
 
-            <div className="w-full max-w-[95%] mx-auto relative z-10">
+            <div className="w-full max-w-[95%] mx-auto relative z-10 ">
                 {/* Badge centralizado no topo */}
                 <div className="flex justify-center mb-8 mt-8 px-4">
                     <Badge className="px-4 sm:px-6 py-2 bg-secondary/20 border-secondary text-secondary-foreground text-xs sm:text-sm font-semibold whitespace-nowrap max-w-full">

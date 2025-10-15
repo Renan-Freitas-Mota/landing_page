@@ -35,7 +35,7 @@ export function Testimonials() {
     const baseScriptUrl = "https://scripts.converteai.net/e4afbe22-7a6e-4dd8-9576-24f2a422d026/players";
 
     return (
-        <section className="py-12 px-4 relative overflow-hidden bg-gradient-to-b from-emerald-950/40 via-slate-950 to-emerald-950/40">
+        <section className="py-24 px-4 relative overflow-hidden bg-gradient-to-b from-emerald-950/40 via-slate-950 to-emerald-950/40">
             {/* Diagonal stripe texture */}
             <div className="absolute inset-0 opacity-10">
                 <div

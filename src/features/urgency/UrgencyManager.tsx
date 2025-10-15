@@ -151,7 +151,7 @@ export function UrgencyManager() {
                 <DialogContent
                     overlayClassName="bg-transparent pointer-events-none"
                     className={cn(
-                        "top-4 left-1/2 translate-x-[-50%] translate-y-0 max-w-sm w-[92vw] sm:w-[28rem]",
+                        "top-24 left-1/2 translate-x-[-50%] translate-y-0 max-w-sm w-[92vw] sm:w-[28rem]",
                         "border-2 border-blue-500/40 bg-background/95 backdrop-blur-xl p-4 shadow-lg",
                         "data-[state=open]:animate-in data-[state=closed]:animate-out"
                     )}>
@@ -162,11 +162,11 @@ export function UrgencyManager() {
                             do produto.
                         </DialogDescription>
                     </DialogHeader>
-                    <div className="flex gap-2 flex-wrap">
-                        <Button size="sm" className="font-semibold" onClick={handleCheckout}>
+                    <div className="flex flex-col gap-2 w-[95%] mx-auto">
+                        <Button size="sm" className="font-semibold w-full" onClick={handleCheckout}>
                             Garantir preço promocional
                         </Button>
-                        <Button size="sm" variant="outline" onClick={() => setFirstWarningOpen(false)}>
+                        <Button size="sm" variant="outline" className="w-full" onClick={() => setFirstWarningOpen(false)}>
                             Continuar vendo
                         </Button>
                     </div>
@@ -177,22 +177,22 @@ export function UrgencyManager() {
                 <DialogContent
                     overlayClassName="bg-transparent pointer-events-none"
                     className={cn(
-                        "top-4 left-1/2 translate-x-[-50%] translate-y-0 max-w-sm w-[92vw] sm:w-[28rem]",
+                        "top-24 left-1/2 translate-x-[-50%] translate-y-0 max-w-sm w-[92vw] sm:w-[28rem]",
                         "border-2 border-orange-500/40 bg-background/95 backdrop-blur-xl p-4 shadow-lg",
                         "data-[state=open]:animate-in data-[state=closed]:animate-out"
                     )}>
                     <DialogHeader>
-                        <DialogTitle className="text-base font-extrabold">🔥 O tempo está acabando!</DialogTitle>
-                        <DialogDescription className="text-sm">
+                        <DialogTitle className="text-lg sm:text-xl font-extrabold">🔥 O tempo está acabando!</DialogTitle>
+                        <DialogDescription className="text-base sm:text-sm">
                             Quando o cronômetro chegar a ZERO, o desconto será REMOVIDO e você terá que pagar o
                             preço INTEGRAL. Não deixe essa oportunidade escapar!
                         </DialogDescription>
                     </DialogHeader>
-                    <div className="flex gap-2 flex-wrap">
-                        <Button size="sm" className="font-semibold" onClick={handleCheckout}>
+                    <div className="flex flex-col gap-2 w-[95%] mx-auto">
+                        <Button size="sm" className="font-semibold text-sm w-full" onClick={handleCheckout}>
                             Garantir desconto agora
                         </Button>
-                        <Button size="sm" variant="outline" onClick={() => setSecondWarningOpen(false)}>
+                        <Button size="sm" variant="outline" className="text-sm w-full" onClick={() => setSecondWarningOpen(false)}>
                             Pensar depois
                         </Button>
                     </div>
@@ -203,23 +203,23 @@ export function UrgencyManager() {
                 <DialogContent
                     overlayClassName="bg-transparent pointer-events-none"
                     className={cn(
-                        "top-4 left-1/2 translate-x-[-50%] translate-y-0 max-w-sm w-[92vw] sm:w-[28rem]",
+                        "top-24 left-1/2 translate-x-[-50%] translate-y-0 max-w-sm w-[92vw] sm:w-[28rem]",
                         "border-2 border-red-500/40 bg-background/95 backdrop-blur-xl p-4 shadow-lg",
                         "data-[state=open]:animate-in data-[state=closed]:animate-out"
                     )}>
                     <DialogHeader>
-                        <DialogTitle className="text-base font-extrabold">🚨 CORRA! Últimos segundos!</DialogTitle>
-                        <DialogDescription className="text-sm">
+                        <DialogTitle className="text-lg sm:text-xl font-extrabold">🚨 CORRA! Últimos segundos!</DialogTitle>
+                        <DialogDescription className="text-base sm:text-sm">
                             AGORA OU NUNCA! Garanta o acesso pelo preço promocional antes que seja tarde demais. O
                             cronômetro está quase zerando!
                         </DialogDescription>
                     </DialogHeader>
-                    <div className="flex gap-2 flex-wrap">
-                        <Button size="sm" className="font-semibold" onClick={handleCheckout}>
+                    <div className="flex flex-col gap-2 w-[95%] mx-auto">
+                        <Button size="sm" className="font-semibold text-sm w-full" onClick={handleCheckout}>
                             GARANTIR AGORA!
                         </Button>
-                        <Button size="sm" variant="outline" onClick={() => setLastChanceOpen(false)}>
-                            Pensar depois
+                        <Button size="sm" variant="outline" className="text-sm w-full" onClick={() => setLastChanceOpen(false)}>
+                            Continuar navegando
                         </Button>
                     </div>
                 </DialogContent>

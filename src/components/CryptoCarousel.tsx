@@ -34,7 +34,7 @@ const cryptos = [
 export function CryptoCarousel() {
     return (
         <section className="py-24 bg-card/30">
-            <div className="w-[95%] mx-auto px-4 md:px-8 lg:px-12">
+            <div className="w-[95%] mx-auto px-1 md:px-8 lg:px-12">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
