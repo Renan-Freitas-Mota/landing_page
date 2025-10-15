@@ -23,7 +23,7 @@ const news = [
 
 export function NewsGrid() {
     return (
-        <section className="py-8 relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
             {/* Animated grid texture background */}
             <div className="absolute inset-0 opacity-20">
                 <div
@@ -45,7 +45,7 @@ export function NewsGrid() {
                 className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl animate-pulse"
                 style={{ animationDelay: "1s" }}
             />
-            <div className="w-[95%] mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+            <div className="w-[95%] mx-auto py-8 px-4 md:px-8 lg:px-12 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}

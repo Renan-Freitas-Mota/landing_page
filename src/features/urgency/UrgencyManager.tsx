@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useCountdownContext } from "@/context/CountdownContext";
 import { COUNTDOWN_DURATION } from "@/hooks/useCountdown";
 import {
@@ -33,16 +33,16 @@ export function UrgencyManager() {
     const [secondWarningOpen, setSecondWarningOpen] = useState(false);
     const [lastChanceOpen, setLastChanceOpen] = useState(false);
     const [offerClosedOpen, setOfferClosedOpen] = useState(false);
+    const hasAutoReopenedRef = useRef(false);
     const [hasShownOfferModal, setHasShownOfferModal] = useState<boolean>(() => {
         if (typeof window === "undefined") return false;
         return window.localStorage.getItem(OFFER_MODAL_SHOWN_KEY) === "1";
     });
 
-    // Pre-compute dynamic thresholds based on total countdown duration
-    const durationSeconds = Math.floor(COUNTDOWN_DURATION / 1000);
-    const thresholdTwoThirds = Math.floor((2 / 3) * durationSeconds); // was 600s for 15 min
-    const thresholdOneThird = Math.floor((1 / 3) * durationSeconds); // was 300s for 15 min
-    const thresholdOneFifth = Math.floor((1 / 5) * durationSeconds); // was 180s for 15 min
+    const durationSeconds = useMemo(() => Math.floor(COUNTDOWN_DURATION / 1000), []);
+    const thresholdTwoThirds = Math.floor((2 / 3) * durationSeconds); 
+    const thresholdOneThird = Math.floor((1 / 3) * durationSeconds); 
+    const thresholdOneFifth = Math.floor((1 / 5) * durationSeconds); 
 
     // Trigger dialogs at key thresholds
     useEffect(() => {
@@ -115,13 +115,34 @@ export function UrgencyManager() {
         window.open(NOTIFY_MAIL, "_blank");
     };
 
-    const handleReopen = () => {
+    const handleReopen = useCallback(() => {
+        toastShownRef.current = {
+            firstWarning: false,
+            secondWarning: false,
+            lastChance: false,
+        };
+        prevSecondsRef.current = durationSeconds;
+
         if (typeof window !== "undefined") {
             window.localStorage.removeItem(OFFER_MODAL_SHOWN_KEY);
         }
+
         setHasShownOfferModal(false);
+        setOfferClosedOpen(false);
         resetCountdown();
-    };
+    }, [durationSeconds, resetCountdown]);
+
+    useEffect(() => {
+        if (!isExpired) {
+            hasAutoReopenedRef.current = false;
+            return;
+        }
+
+        if (canReopen && !hasAutoReopenedRef.current) {
+            hasAutoReopenedRef.current = true;
+            handleReopen();
+        }
+    }, [isExpired, canReopen, handleReopen]);
 
     return (
         <>

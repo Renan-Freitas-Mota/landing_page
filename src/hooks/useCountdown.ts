@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 
-export const COUNTDOWN_DURATION = 10 * 60 * 1000; // 10 minutes in milliseconds
-export const REOPEN_DELAY = 2 * 60 * 1000; // minutes to wait before reopening offer (scaled from 3 for 15min)
+export const COUNTDOWN_DURATION = 15 * 60 * 1000; // 10 minutes in milliseconds
+export const REOPEN_DELAY = 5 * 60 * 1000; // wait 5 minutes at full price before reopening offer
 export const STORAGE_KEY = "countdown_end_time";
 export const REOPEN_AT_KEY = "countdown_reopen_at";
 
