@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
     // Durante o deploy no GitHub Pages, defina NODE_ENV=production e o nome do repositório
-    base: process.env.DEPLOY_ENV === "ghpages" ? "/landing_page/" : "/",
+    base: "/landing_page",
     server: {
         host: "::",
         port: 8080,
