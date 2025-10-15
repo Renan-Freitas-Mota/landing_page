@@ -5,16 +5,17 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: process.env.NODE_ENV === 'production' ? '/shark-signals-landing/' : '/',
-  server: {
-    host: "::",
-    port: 8080,
-    allowedHosts: ["beloved-barnacle-smart.ngrok-free.app"],
-  },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
+    // Durante o deploy no GitHub Pages, defina NODE_ENV=production e o nome do repositório
+    base: process.env.DEPLOY_ENV === "ghpages" ? "/landing_page/" : "/",
+    server: {
+        host: "::",
+        port: 8080,
+        allowedHosts: ["beloved-barnacle-smart.ngrok-free.app, carteiradostubaroes.com.br, https://renan-freitas-mota.github.io/landing_page/"],
     },
-  },
+    plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+    resolve: {
+        alias: {
+            "@": path.resolve(__dirname, "./src"),
+        },
+    },
 }));
