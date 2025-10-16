@@ -16,7 +16,7 @@ export function InvestmentCalculator() {
     };
 
     return (
-        <section className="pb-24 px-4 overflow-hidden">
+        <section className="pb-12 px-4 overflow-hidden">
             <div className="w-full max-w-4xl mx-auto">
                 <h2 className="text-2xl font-bold mb-4 text-center">SIMULADOR DE INVESTIMENTO</h2>
                 <motion.div

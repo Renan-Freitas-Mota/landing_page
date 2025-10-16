@@ -11,7 +11,7 @@ export function FinalCTA() {
     return (
         <section
             id="final-cta"
-            className="py-24 px-2 sm:px-4 relative overflow-hidden bg-gradient-to-tr from-amber-950/30 via-slate-950 to-yellow-950/30">
+            className="py-12 px-2 sm:px-4 relative overflow-hidden bg-gradient-to-tr from-amber-950/30 via-slate-950 to-yellow-950/30">
             {/* Hexagon pattern texture */}
             <div className="absolute inset-0 opacity-10">
                 <div

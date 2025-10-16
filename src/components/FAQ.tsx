@@ -38,7 +38,7 @@ const faqs = [
 
 export function FAQ() {
     return (
-        <section className="py-24 px-4 relative overflow-hidden bg-gradient-to-bl from-indigo-950/30 via-slate-950 to-purple-950/30">
+        <section className="py-12 px-4 relative overflow-hidden bg-gradient-to-bl from-indigo-950/30 via-slate-950 to-purple-950/30">
             {/* Dot matrix texture */}
             <div className="absolute inset-0 opacity-15">
                 <div

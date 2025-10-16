@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 export function About() {
     return (
-        <section className="container relative overflow-hidden py-0 pt-24">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <section className="container relative overflow-hidden py-0 pt-12">
+            <div className="grid lg:grid-cols-2 gap-2 lg:gap-12 items-center">
                 {/* Left side - Content */}
                 <motion.div
                     initial={{ opacity: 0, x: -30 }}

@@ -5,7 +5,7 @@ export function VideoSection() {
     const videoId = "68ed80f9a5c41524a5302727";
 
     return (
-        <section className="py-24  relative bg-background/95 overflow-hidden">
+        <section className="py-12  relative bg-background/95 overflow-hidden">
             {/* Dark texturized background */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,0.8),rgba(0,0,0,0.95))]" />
             <div
