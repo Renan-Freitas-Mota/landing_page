@@ -84,7 +84,7 @@ export function FinalCTA() {
                             </>
                         ) : (
                             <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-2">
-                                R$ 497,00
+                                R$ 97,00
                             </p>
                         )}
                         <p className="text-xs sm:text-sm text-muted-foreground">
