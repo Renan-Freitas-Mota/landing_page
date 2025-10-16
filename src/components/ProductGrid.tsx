@@ -31,7 +31,7 @@ const features = [
 
 export function ProductGrid() {
     return (
-        <section className="py-24 px-4">
+        <section className="py-12 px-4">
             <div className="container mx-auto max-w-7xl">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}

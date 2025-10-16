@@ -65,9 +65,7 @@ export function About() {
                         alt="Renan - Especialista em Criptomoedas"
                         className="w-full h-full object-contain object-center"
                     />
-                    <Badge className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 lg:left-8 lg:translate-x-0 px-4 sm:px-6 py-2 gradient-gold text-accent-foreground font-bold text-xs sm:text-sm shadow-gold">
-                        Especialista em Criptomoedas
-                    </Badge>
+                    <Badge className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 lg:left-8 lg:translate-x-0 px-4 sm:px-6 py-2 gradient-gold text-accent-foreground font-bold text-xs sm:text-sm shadow-gold whitespace-nowrap">Especialista em Criptomoedas</Badge>
                 </motion.div>
             </div>
         </section>

@@ -23,7 +23,7 @@ const news = [
 
 export function NewsGrid() {
     return (
-        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+        <section className="py-8 relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
             {/* Animated grid texture background */}
             <div className="absolute inset-0 opacity-20">
                 <div

@@ -28,7 +28,7 @@ const faqs = [
     },
     {
         question: "Preciso ficar o dia todo monitorando o mercado?",
-        answer: "Não! Uma das maiores vantagens do método é que você pode dedicar apenas alguns minutos por semana. Os alertas estratégicos avisam sobre os momentos importantes, e as criptomoedas selecionadas não são para fazer operaçaões diárias, os investimentos duram dias/semanas.",
+        answer: "Não! Uma das maiores vantagens do método é que você pode dedicar apenas alguns minutos por semana. Os alertas estratégicos avisam sobre os momentos importantes, e as criptomoedas selecionadas não são para fazer operações diárias, os investimentos duram dias/semanas.",
     },
     {
         question: "O acesso é vitalício mesmo?",
