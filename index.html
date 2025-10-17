@@ -20,6 +20,13 @@
               as="fetch"
               type="application/vnd.apple.mpegurl"
               crossorigin="anonymous">
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-K9W8SCP4');</script>
+        <!-- End Google Tag Manager -->
         <link rel="dns-prefetch" href="https://cdn.converteai.net">
         <link rel="dns-prefetch" href="https://scripts.converteai.net">
         <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -81,5 +88,33 @@
     <body>
         <div id="root"></div>
         <script type="module" src="/src/main.tsx"></script>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9W8SCP4"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
     </body>
+        <script>
+            let prefix = ["https://payment.hotmart.com", "https://pay.hotmart.com"];
+        
+        function getParams() {
+            let t = "",
+                e = window.top.location.href,
+                r = new URL(e);
+            if (null != r) {
+                let a = r.searchParams.get("utm_source"),
+                    n = r.searchParams.get("utm_medium"),
+                    o = r.searchParams.get("utm_campaign"),
+                    m = r.searchParams.get("utm_term"),
+                    c = r.searchParams.get("utm_content"); - 1 !== e.indexOf("?") && (t = `&sck=${a}|${n}|${o}|${m}|${c}`), console.log(t)
+            }
+            return t
+        }! function() {
+            var t = new URLSearchParams(window.location.search);
+            t.toString() && document.querySelectorAll("a").forEach(function(e) {
+                for (let r = 0; r < prefix.length; r++) - 1 !== e.href.indexOf(prefix[r]) && (-1 === e.href.indexOf("?") ? e.href += "?" + t.toString() + getParams() : e.href += "&" + t.toString() + getParams())
+            })
+        }();
+        
+        console.log('%cScript de rastreamento de vendas desenvolvido pela Comunidade NOD - Dericson Calari e Samuel Choairy', 'font-size:20px;color:yellow;');
+        </script>
 </html>
