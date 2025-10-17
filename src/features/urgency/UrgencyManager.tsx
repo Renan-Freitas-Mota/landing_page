@@ -13,7 +13,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 // Replaced toast warnings with lightweight Dialogs
 
-const CHECKOUT_URL = "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797";
+const CHECKOUT_URL_BEFORE = "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797";
+const CHECKOUT_URL_AFTER = "https://pay.hotmart.com/A102246370V?off=1lb9dqad&bid=1760634516455";
 const WAITLIST_MAIL =
     "mailto:contato.r7investimentos@gmail.com?subject=Lista%20de%20espera%20-%20Carteira%20dos%20Tubar%C3%B5es";
 const NOTIFY_MAIL =
@@ -86,7 +87,6 @@ export function UrgencyManager() {
         }
     }, [totalSeconds, thresholdOneFifth]);
 
-    // Lock the page when the offer expires (only once per countdown cycle)
     useEffect(() => {
         if (isExpired) {
             if (!hasShownOfferModal) {
@@ -95,24 +95,28 @@ export function UrgencyManager() {
                     window.localStorage.setItem(OFFER_MODAL_SHOWN_KEY, "1");
                 }
                 setHasShownOfferModal(true);
-            } else {
-                setOfferClosedOpen(false);
             }
         } else {
             setOfferClosedOpen(false);
+            // Reset modal state for next expiration
+            if (typeof window !== "undefined") {
+                window.localStorage.removeItem(OFFER_MODAL_SHOWN_KEY);
+            }
+            setHasShownOfferModal(false);
         }
     }, [isExpired, hasShownOfferModal]);
 
     const handleCheckout = () => {
-        window.open(CHECKOUT_URL, "_blank");
+        const targetUrl = CHECKOUT_URL_BEFORE;
+        window.open(targetUrl, "_self");
     };
 
     const handleWaitlist = () => {
-        window.open(WAITLIST_MAIL, "_blank");
+        window.open(WAITLIST_MAIL, "_self");
     };
 
     const handleNotify = () => {
-        window.open(NOTIFY_MAIL, "_blank");
+        window.open(NOTIFY_MAIL, "_self");
     };
 
     const handleReopen = useCallback(() => {
@@ -228,11 +232,15 @@ export function UrgencyManager() {
             <Dialog
                 open={offerClosedOpen}
                 onOpenChange={(open) => {
-                    if (!open) {
-                        setOfferClosedOpen(false);
+                    // Ignore external attempts to close (overlay click / ESC)
+                    if (open) {
+                        setOfferClosedOpen(true);
                     }
                 }}>
                 <DialogContent
+                    onInteractOutside={(e) => e.preventDefault()}
+                    onPointerDownOutside={(e) => e.preventDefault()}
+                    onEscapeKeyDown={(e) => e.preventDefault()}
                     className={cn(
                         "w-[calc(100vw-2rem)] max-w-lg border-2 border-red-500/40 bg-background/95 backdrop-blur-xl",
                         "data-[state=open]:animate-in data-[state=closed]:animate-out",

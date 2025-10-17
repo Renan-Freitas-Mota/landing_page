@@ -18,10 +18,10 @@ export function FloatingCTA() {
     }, []);
 
     const handleCTAClick = () => {
-        window.open(
-            "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797",
-            "_blank"
-        );
+        const url = isExpired
+            ? "https://pay.hotmart.com/A102246370V?off=1lb9dqad&bid=1760634516455"
+            : "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797";
+        window.open(url, "_self");
     };
 
     return (

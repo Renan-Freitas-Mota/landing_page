@@ -103,12 +103,13 @@ export function NewsGrid() {
                                         className="h-full relative">
                                         <Card
                                             className="overflow-hidden glass border-border/50 hover:border-primary/70 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.6),0_0_60px_rgba(59,130,246,0.3)] cursor-pointer group relative"
-                                            onClick={() =>
+                                            onClick={() => {
+                                                // This section does not have access to countdown context; use the pre-expiry link
                                                 window.open(
                                                     "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797",
-                                                    "_blank"
-                                                )
-                                            }>
+                                                    "_self"
+                                                );
+                                            }}>
                                             {/* Enhanced glow effect overlay */}
                                             <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10" />
 

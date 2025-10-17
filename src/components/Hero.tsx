@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect, lazy, Suspense } from "react";
+import { useCountdownContext } from "@/context/CountdownContext";
 import { InView } from "react-intersection-observer";
 const LazyHeroChart = lazy(() => import("./HeroChart").then((m) => ({ default: m.HeroChart })));
 
@@ -157,11 +158,13 @@ export function Hero() {
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
+    const { isExpired } = useCountdownContext();
+
     const handleCTAClick = () => {
-        window.open(
-            "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797",
-            "_blank"
-        );
+        const url = isExpired
+            ? "https://pay.hotmart.com/A102246370V?off=1lb9dqad&bid=1760634516455"
+            : "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797";
+        window.open(url, "_self");
     };
 
     return (

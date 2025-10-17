@@ -100,12 +100,12 @@ export function FinalCTA() {
 
                     <Button
                         size="lg"
-                        onClick={() =>
-                            window.open(
-                                "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797",
-                                "_blank"
-                            )
-                        }
+                        onClick={() => {
+                            const url = isExpired
+                                ? "https://pay.hotmart.com/A102246370V?off=1lb9dqad&bid=1760634516455"
+                                : "https://pay.hotmart.com/A102246370V?off=ybzjvlf2&checkoutMode=10&bid=1759619193797";
+                            window.open(url, "_self");
+                        }}
                         className={`w-full sm:w-auto font-bold text-base sm:text-lg md:text-xl px-6 sm:px-10 md:px-16 py-3 sm:py-4 md:py-5 hover:scale-105 transition-transform mb-4 md:mb-5 ${
                             !isExpired 
                                 ? "gradient-gold text-accent-foreground shadow-gold" 
